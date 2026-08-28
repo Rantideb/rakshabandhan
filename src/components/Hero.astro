@@ -1,0 +1,118 @@
+---
+// Hero.astro - Clean Modern Sacred Raksha Bandhan Hero Banner
+---
+
+<header class="hero-section">
+  <div class="section-badge">
+    <span class="badge-symbol">ॐ</span>
+    <span data-i18n="shravanaPurnima">Shravana Purnima Celebration</span>
+  </div>
+
+  <h1 class="hero-title">
+    <span data-i18n="heroTitlePrefix">The Sacred Bond of</span> <br />
+    <span class="gold-text" data-i18n="heroTitleGold">Raksha &amp; Eternal Affection</span>
+  </h1>
+
+  <div class="shloka-banner hero-shloka">
+    <p class="shloka-text">
+      येन बद्धो बली राजा दानवेन्द्रो महाबलः।<br />
+      तेन त्वां प्रतिबद्धनामि रक्षे मा चल मा चल॥
+    </p>
+    <p class="shloka-meaning" data-i18n="shlokaMeaning">
+      "With the sacred bond by which King Bali was protected, I bind this sacred thread upon you. May it protect and preserve our bond forever."
+    </p>
+  </div>
+
+  <p class="hero-subtitle" data-i18n="heroSubtitle">
+    A dignified digital space to celebrate Raksha Bandhan. Experience the traditional Puja Vidhi, 
+    design an auspicious Raksha Sutra, and exchange private encrypted sibling letters.
+  </p>
+
+  <div class="hero-cta-group">
+    <a href="/promi" class="btn-primary promi-hero-btn">
+      <span data-i18n="heroCtaPromi">Dedicated Sanctuary for Promi</span>
+      <span class="btn-arrow">&rarr;</span>
+    </a>
+    <a href="#ceremony-section" class="btn-secondary" data-i18n="heroCtaPuja">
+      Puja Vidhi &amp; Aarti
+    </a>
+    <a href="#rakhi-studio" class="btn-secondary" data-i18n="heroCtaStudio">
+      Design Raksha Sutra
+    </a>
+    <a href="#sankalpa-section" class="btn-secondary" data-i18n="heroCtaVows">
+      Raksha Sankalpa Vows
+    </a>
+  </div>
+</header>
+
+<style>
+  .hero-section {
+    text-align: center;
+    padding: 4rem 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin: 0.8rem 0 1.2rem;
+  }
+
+  .hero-shloka {
+    max-width: 720px;
+    margin: 1.2rem auto 1.6rem;
+    width: 100%;
+  }
+
+  .hero-subtitle {
+    max-width: 640px;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.65;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .promi-hero-btn {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+    font-size: 0.95rem;
+    padding: 0.8rem 1.8rem;
+    gap: 0.6rem;
+  }
+
+  .promi-hero-btn:hover {
+    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+  }
+
+  .btn-arrow {
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: transform 0.15s ease;
+  }
+
+  .promi-hero-btn:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 640px) {
+    .hero-section {
+      padding: 2.5rem 0.5rem 2rem;
+    }
+    .hero-title {
+      font-size: 2.1rem !important;
+    }
+    .hero-cta-group a {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,576 @@
+---
+// SiblingSLA.astro - Raksha Sankalpa: Sacred Vows of Sibling Protection & Mutual Trust
+---
+
+<section class="glass-panel sla-section" id="sankalpa-section">
+  <div class="section-badge">
+    <span class="badge-symbol">ॐ</span>
+    <span data-i18n="slaBadge">Raksha Sankalpa • Sacred Covenant</span>
+  </div>
+  <h2 class="section-title" data-i18n="slaTitle">Sanctified Sibling Pratigya Patra</h2>
+  <p class="section-desc" data-i18n="slaDesc">
+    Formalize your lifelong commitments of protection, unconditional affection, and familial honor with your digital signature.
+  </p>
+
+  <div class="sla-workspace">
+    <!-- Configurator Form -->
+    <div class="sla-form-column">
+      <div class="control-group">
+        <label class="control-label" for="party-a" data-i18n="partyALabel">First Sibling (Name / Relation)</label>
+        <input type="text" id="party-a" class="input-field" placeholder="e.g. Priya (Sister)" data-i18n-placeholder="partyAPlaceholder" />
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="party-b" data-i18n="partyBLabel">Second Sibling (Name / Relation)</label>
+        <input type="text" id="party-b" class="input-field" placeholder="e.g. Rohan (Brother)" data-i18n-placeholder="partyBPlaceholder" />
+      </div>
+
+      <div class="clauses-header">
+        <h4 data-i18n="clausesTitle">Sacred Pratigya &amp; Commitments</h4>
+      </div>
+
+      <div class="clause-item">
+        <input type="checkbox" id="clause-protection" checked />
+        <label for="clause-protection">
+          <strong data-i18n="sankalpa1Title">Sankalpa I: Raksha &amp; Sahayata</strong><br />
+          <span data-i18n="sankalpa1Desc">Unconditional commitment to stand as an unwavering shield and support in every phase of life.</span>
+        </label>
+      </div>
+
+      <div class="clause-item">
+        <input type="checkbox" id="clause-reverence" checked />
+        <label for="clause-reverence">
+          <strong data-i18n="sankalpa2Title">Sankalpa II: Sneha &amp; Maryada</strong><br />
+          <span data-i18n="sankalpa2Desc">Nurturing mutual dignity, listening with empathy, and forgiving minor differences with unconditional love.</span>
+        </label>
+      </div>
+
+      <div class="clause-item">
+        <input type="checkbox" id="clause-trust" checked />
+        <label for="clause-trust">
+          <strong data-i18n="sankalpa3Title">Sankalpa III: Smriti &amp; Rahasya</strong><br />
+          <span data-i18n="sankalpa3Desc">Safeguarding shared childhood secrets and standing together across all challenges.</span>
+        </label>
+      </div>
+
+      <div class="clause-item">
+        <input type="checkbox" id="clause-blessings" checked />
+        <label for="clause-blessings">
+          <strong data-i18n="sankalpa4Title">Sankalpa IV: Mangala Kamana</strong><br />
+          <span data-i18n="sankalpa4Desc">Daily prayers for each other's spiritual peace, health, happiness, and prosperity.</span>
+        </label>
+      </div>
+
+      <div class="signature-box-container">
+        <label class="control-label" data-i18n="signPadTitle">Digital Signature / Hastakshar (Touch or Cursor)</label>
+        <canvas id="signature-canvas" width="340" height="120"></canvas>
+        <div class="signature-actions">
+          <button type="button" class="btn-secondary btn-sm" id="clear-sig-btn" data-i18n="btnClearSign">Clear Signature</button>
+          <span class="sig-hint" data-i18n="signPadPrompt">Sign above to consecrate this deed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Contract Preview Document -->
+    <div class="sla-preview-column">
+      <div class="rfc-document" id="rfc-document">
+        <div class="rfc-header">
+          <div data-i18n="docHeaderPurnima">SHRAVANA PURNIMA</div>
+          <div data-i18n="docHeaderSamvat">SAMVAT 2083</div>
+          <div data-i18n="docHeaderCategory">CATEGORY: RAKSHA SUTRA</div>
+          <div data-i18n="docHeaderStatus">STATUS: BINDING &amp; SACRED</div>
+        </div>
+
+        <div class="rfc-divider"></div>
+
+        <div class="doc-sanskrit-shloka">
+          "भ्रातृ-भगिनी स्नेह-बन्धनम् सर्वदा विजयते"
+        </div>
+
+        <h3 class="rfc-title" data-i18n="docTitle">RAKSHA SANKALPA PRATIGYA PATRA</h3>
+        
+        <p class="rfc-text">
+          <strong data-i18n="docBetween">SANCTIFIED BETWEEN:</strong> <span id="doc-party-a" class="highlight-text">First Sibling</span> and <span id="doc-party-b" class="highlight-text">Second Sibling</span>.
+        </p>
+
+        <div class="rfc-body" id="rfc-active-clauses">
+          <!-- Dynamically populated clauses -->
+        </div>
+
+        <div class="rfc-signatures">
+          <div class="sig-block">
+            <div class="sig-img-slot" id="doc-sig-slot">
+              <span class="sig-placeholder" data-i18n="docPendingSig">[Pending Hastakshar]</span>
+            </div>
+            <div class="sig-line" data-i18n="docSigLabel">SIBLING SIGNATURE</div>
+          </div>
+          <div class="sig-block">
+            <div class="sig-stamp" data-i18n="docConsecrated">CONSECRATED BY RAKHI SUTRA</div>
+            <div class="sig-line" data-i18n="docWitness">SACRED BOND WITNESS</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-actions">
+        <button type="button" class="btn-primary" id="download-contract-btn" data-i18n="docExportBtn">
+          Export Consecrated Deed (PNG)
+        </button>
+        <button type="button" class="btn-secondary" id="share-sla-whatsapp" data-i18n="docShareBtn">
+          Share Deed with Sibling
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sla-section {
+    padding: 2.5rem 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-desc {
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .sla-workspace {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .sla-form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .clauses-header h4 {
+    color: var(--text-main);
+    font-size: 0.92rem;
+    margin-top: 0.4rem;
+  }
+
+  .clause-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    padding: 0.8rem 0.95rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  .clause-item input[type="checkbox"] {
+    margin-top: 0.2rem;
+    accent-color: var(--accent-gold);
+    width: 16px;
+    height: 16px;
+  }
+
+  .signature-box-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-top: 0.3rem;
+  }
+
+  #signature-canvas {
+    width: 100%;
+    max-width: 340px;
+    height: 110px;
+    background: #FFFFFF;
+    border: 1.5px solid var(--border-gold);
+    border-radius: var(--radius-sm);
+    cursor: crosshair;
+    touch-action: none;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .signature-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .btn-sm {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.76rem;
+  }
+
+  .sig-hint {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* Document Styling */
+  .rfc-document {
+    background: #FAFAF9;
+    color: #1C1917;
+    padding: 1.8rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid #D6D3D1;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .rfc-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem;
+    font-weight: 600;
+    font-size: 0.74rem;
+    color: #78716C;
+    letter-spacing: 0.04em;
+  }
+
+  .rfc-divider {
+    height: 1px;
+    background: #E7E5E4;
+    margin: 0.75rem 0 1rem;
+  }
+
+  .doc-sanskrit-shloka {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 0.92rem;
+    text-align: center;
+    color: #B91C1C;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .rfc-title {
+    font-family: 'Cinzel Decorative', Georgia, serif;
+    font-size: 1.05rem;
+    color: #991B1B;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .rfc-text {
+    margin-bottom: 0.85rem;
+    color: #292524;
+  }
+
+  .highlight-text {
+    color: #991B1B;
+    font-weight: 600;
+  }
+
+  .rfc-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rfc-clause-line {
+    background: #F5F5F4;
+    padding: 0.5rem 0.75rem;
+    border-left: 3px solid #B91C1C;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .rfc-signatures {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 1.25rem;
+    padding-top: 0.85rem;
+    border-top: 1px dashed #D6D3D1;
+  }
+
+  .sig-block {
+    text-align: center;
+    width: 45%;
+  }
+
+  .sig-img-slot {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sig-placeholder {
+    color: #A8A29E;
+    font-style: normal;
+    font-size: 0.72rem;
+  }
+
+  .sig-stamp {
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: #047857;
+    border: 1px solid #047857;
+    padding: 0.25rem 0.4rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .sig-line {
+    border-top: 1px solid #78716C;
+    padding-top: 0.25rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+  }
+
+  .doc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .sla-workspace {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .sla-section {
+      padding: 1.75rem 1rem;
+    }
+    .rfc-document {
+      padding: 1.25rem 0.85rem;
+      font-size: 0.76rem;
+    }
+    .rfc-title {
+      font-size: 0.95rem;
+    }
+    .doc-actions .btn-primary,
+    .doc-actions .btn-secondary {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import { soundEngine } from '../utils/audio';
+
+  const partyAInput = document.getElementById('party-a') as HTMLInputElement;
+  const partyBInput = document.getElementById('party-b') as HTMLInputElement;
+  const docPartyA = document.getElementById('doc-party-a');
+  const docPartyB = document.getElementById('doc-party-b');
+  const rfcBody = document.getElementById('rfc-active-clauses');
+  const docSigSlot = document.getElementById('doc-sig-slot');
+  const downloadBtn = document.getElementById('download-contract-btn');
+  const shareBtn = document.getElementById('share-sla-whatsapp');
+
+  const checkboxes = {
+    protection: document.getElementById('clause-protection') as HTMLInputElement,
+    reverence: document.getElementById('clause-reverence') as HTMLInputElement,
+    trust: document.getElementById('clause-trust') as HTMLInputElement,
+    blessings: document.getElementById('clause-blessings') as HTMLInputElement,
+  };
+
+  const clauseDefinitions = {
+    en: {
+      protection: 'Sankalpa I (Raksha): I pledge to stand as a steadfast protector and loyal supporter in all seasons of life.',
+      reverence: 'Sankalpa II (Maryada): I promise to uphold mutual dignity, empathy, and forgive differences with warmth.',
+      trust: 'Sankalpa III (Vishwas): I promise sacred confidentiality and unwavering trust in our sibling bond.',
+      blessings: 'Sankalpa IV (Ashirwad): I pray for your eternal well-being, success, peace, and spiritual happiness.',
+      defaultA: 'First Sibling',
+      defaultB: 'Second Sibling',
+    },
+    bn: {
+      protection: 'সংকল্প ১ (রক্ষা): আমি জীবনের সমস্ত ঋতুতে অটুট রক্ষাকবচ এবং অনুগত সমর্থক হিসেবে পাশে থাকার অঙ্গীকার করছি।',
+      reverence: 'সংকল্প ২ (মর্যাদা): আমি পারস্পরিক মর্যাদা, সহানুভূতি বজায় রাখার ও ভালোবাসায় ভুলত্রুটি ক্ষমা করার প্রতিশ্রুতি দিচ্ছি।',
+      trust: 'সংকল্প ৩ (বিশ্বাস): আমি আমাদের ভাই-বোনের পবিত্র বিশ্বাস ও গোপনীয়তা অটুট রাখার প্রতিশ্রুতি দিচ্ছি।',
+      blessings: 'সংকল্প ৪ (আশির্বাদ): আমি তোমার চিরন্তন মঙ্গল, সাফল্য, মানসিক শান্তি ও সুখের জন্য প্রার্থনা করছি।',
+      defaultA: 'প্রথম ভাই/বোন',
+      defaultB: 'দ্বিতীয় ভাই/বোন',
+    }
+  };
+
+  function updateDoc() {
+    const lang = (localStorage.getItem('rb_lang') || 'en') as 'en' | 'bn';
+    const defs = clauseDefinitions[lang] || clauseDefinitions.en;
+
+    if (docPartyA && partyAInput) docPartyA.textContent = partyAInput.value || defs.defaultA;
+    if (docPartyB && partyBInput) docPartyB.textContent = partyBInput.value || defs.defaultB;
+
+    if (rfcBody) {
+      rfcBody.innerHTML = '';
+      Object.keys(checkboxes).forEach(k => {
+        const key = k as keyof typeof checkboxes;
+        if (checkboxes[key]?.checked) {
+          const div = document.createElement('div');
+          div.className = 'rfc-clause-line';
+          div.textContent = defs[key];
+          rfcBody.appendChild(div);
+        }
+      });
+    }
+  }
+
+  partyAInput?.addEventListener('input', updateDoc);
+  partyBInput?.addEventListener('input', updateDoc);
+  Object.values(checkboxes).forEach(cb => cb?.addEventListener('change', updateDoc));
+  updateDoc();
+
+  window.addEventListener('languageChange', () => {
+    updateDoc();
+  });
+
+  // Signature Canvas Drawing
+  const sigCanvas = document.getElementById('signature-canvas') as HTMLCanvasElement;
+  const clearBtn = document.getElementById('clear-sig-btn');
+  let sigCtx: CanvasRenderingContext2D | null = null;
+  let isDrawing = false;
+
+  if (sigCanvas) {
+    sigCtx = sigCanvas.getContext('2d');
+    if (sigCtx) {
+      sigCtx.strokeStyle = '#991B1B';
+      sigCtx.lineWidth = 2.5;
+      sigCtx.lineCap = 'round';
+      sigCtx.lineJoin = 'round';
+    }
+
+    const startDraw = (e: MouseEvent | TouchEvent) => {
+      isDrawing = true;
+      if (!sigCtx || !sigCanvas) return;
+      const rect = sigCanvas.getBoundingClientRect();
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      sigCtx.beginPath();
+      sigCtx.moveTo(clientX - rect.left, clientY - rect.top);
+    };
+
+    const draw = (e: MouseEvent | TouchEvent) => {
+      if (!isDrawing || !sigCtx || !sigCanvas) return;
+      e.preventDefault();
+      const rect = sigCanvas.getBoundingClientRect();
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      sigCtx.lineTo(clientX - rect.left, clientY - rect.top);
+      sigCtx.stroke();
+    };
+
+    const stopDraw = () => {
+      if (isDrawing && sigCanvas && docSigSlot) {
+        isDrawing = false;
+        docSigSlot.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = sigCanvas.toDataURL('image/png');
+        img.style.maxHeight = '45px';
+        docSigSlot.appendChild(img);
+        soundEngine.playShimmer();
+      }
+    };
+
+    sigCanvas.addEventListener('mousedown', startDraw);
+    sigCanvas.addEventListener('mousemove', draw);
+    window.addEventListener('mouseup', stopDraw);
+
+    sigCanvas.addEventListener('touchstart', startDraw, { passive: false });
+    sigCanvas.addEventListener('touchmove', draw, { passive: false });
+    window.addEventListener('touchend', stopDraw);
+  }
+
+  clearBtn?.addEventListener('click', () => {
+    if (sigCtx && sigCanvas) {
+      sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+      if (docSigSlot) {
+        docSigSlot.innerHTML = '<span class="sig-placeholder">[Pending Hastakshar]</span>';
+      }
+    }
+  });
+
+  // Export Contract using Pure HTML5 Canvas Rendering
+  downloadBtn?.addEventListener('click', () => {
+    const rfcEl = document.getElementById('rfc-document');
+    if (!rfcEl) return;
+
+    const offCanvas = document.createElement('canvas');
+    offCanvas.width = 800;
+    offCanvas.height = 700;
+    const oCtx = offCanvas.getContext('2d');
+    if (!oCtx) return;
+
+    // Paper Background
+    oCtx.fillStyle = '#FDFBF7';
+    oCtx.fillRect(0, 0, 800, 700);
+
+    // Border
+    oCtx.strokeStyle = '#D4AF37';
+    oCtx.lineWidth = 10;
+    oCtx.strokeRect(10, 10, 780, 680);
+
+    // Text Header
+    oCtx.fillStyle = '#333333';
+    oCtx.font = '14px serif';
+    oCtx.fillText('SHRAVANA PURNIMA  |  SAMVAT 2083  |  SACRED RAKSHA SANKALPA', 40, 50);
+
+    // Title
+    oCtx.fillStyle = '#8B0000';
+    oCtx.font = 'bold 22px serif';
+    oCtx.textAlign = 'center';
+    oCtx.fillText('RAKSHA SANKALPA PRATIGYA PATRA', 400, 100);
+
+    // Parties
+    oCtx.textAlign = 'left';
+    oCtx.fillStyle = '#111111';
+    oCtx.font = '16px serif';
+    oCtx.fillText(`SANCTIFIED BETWEEN: ${partyAInput.value || 'Sibling A'} & ${partyBInput.value || 'Sibling B'}`, 40, 150);
+
+    // Clauses
+    let y = 200;
+    Object.keys(checkboxes).forEach(k => {
+      const key = k as keyof typeof checkboxes;
+      if (checkboxes[key]?.checked) {
+        oCtx.fillStyle = '#FAF0E6';
+        oCtx.fillRect(40, y - 20, 720, 38);
+        oCtx.fillStyle = '#8B0000';
+        oCtx.fillRect(40, y - 20, 6, 38);
+        oCtx.fillStyle = '#222222';
+        oCtx.font = '13px serif';
+        oCtx.fillText(clauseDefinitions[key], 55, y + 4);
+        y += 50;
+      }
+    });
+
+    // Stamp
+    oCtx.fillStyle = '#00796B';
+    oCtx.font = 'bold 13px serif';
+    oCtx.strokeRect(520, y + 20, 240, 45);
+    oCtx.fillText('CONSECRATED BY RAKSHA SUTRA', 530, y + 48);
+
+    // Party Sig
+    if (sigCanvas) {
+      oCtx.drawImage(sigCanvas, 60, y + 10, 160, 60);
+    }
+    oCtx.fillStyle = '#111';
+    oCtx.fillText('SIBLING SIGNATURE', 60, y + 85);
+
+    const a = document.createElement('a');
+    a.download = `raksha-sankalpa-${Date.now()}.png`;
+    a.href = offCanvas.toDataURL('image/png');
+    a.click();
+    soundEngine.playCelebrationChime();
+  });
+
+  shareBtn?.addEventListener('click', () => {
+    const text = encodeURIComponent(`Pranam! I have consecrated our Raksha Sankalpa Pratigya Patra for Raksha Bandhan. View and review our sacred vows here: ${window.location.origin}/#sankalpa-section`);
+    window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+  });
+</script>

@@ -1,0 +1,519 @@
+---
+// RakhiBuilder.astro - Traditional Sacred Raksha Sutra Studio
+---
+
+<section class="glass-panel rakhi-studio-section" id="rakhi-studio">
+  <div class="section-badge">
+    <span class="badge-symbol">卐</span>
+    <span data-i18n="studioBadge">Raksha Sutra Shilpakala Studio</span>
+  </div>
+  <h2 class="section-title" data-i18n="studioTitle">Handcraft Your Sacred Rakhi</h2>
+  <p class="section-desc" data-i18n="studioDesc">
+    Design a traditional Raksha Sutra woven with auspicious motifs, sacred Kalava threads, and sanctified gemstones.
+  </p>
+
+  <div class="studio-workspace">
+    <!-- Interactive Canvas Display -->
+    <div class="canvas-preview-container">
+      <canvas id="rakhi-canvas" width="460" height="460"></canvas>
+      <div class="canvas-actions">
+        <button class="btn-secondary" id="download-rakhi-btn" data-i18n="btnDownloadRakhi">
+          Download Raksha Sutra (PNG)
+        </button>
+        <button class="btn-secondary" id="randomize-rakhi-btn" data-i18n="btnRandomizeRakhi">
+          Generate Auspicious Pattern
+        </button>
+      </div>
+    </div>
+
+    <!-- Controls Panel -->
+    <div class="studio-controls-panel">
+      <!-- 1. Centerpiece Motif -->
+      <div class="control-group">
+        <label class="control-label" data-i18n="motifLabel">Central Sacred Motif</label>
+        <div class="pill-options" id="motif-options">
+          <button class="pill-btn active" data-motif="om" data-i18n="motifOm">Sacred Om (ॐ)</button>
+          <button class="pill-btn" data-motif="mandala" data-i18n="motifMandala">Vedic Mandala</button>
+          <button class="pill-btn" data-motif="swastika" data-i18n="motifSwastika">Shubh Swastika (卐)</button>
+          <button class="pill-btn" data-motif="kundan" data-i18n="motifKundan">Kundan Ratna</button>
+          <button class="pill-btn" data-motif="rudraksha" data-i18n="motifRudraksha">Rudraksha</button>
+        </div>
+      </div>
+
+      <!-- 2. Sacred Thread Style -->
+      <div class="control-group">
+        <label class="control-label" data-i18n="threadLabel">Sacred Thread (Kalava / Moli)</label>
+        <div class="pill-options" id="thread-options">
+          <button class="pill-btn active" data-thread="moli" data-i18n="threadMoli">Vedic Moli (Red &amp; Gold)</button>
+          <button class="pill-btn" data-thread="zari" data-i18n="threadZari">Suvarna Zari (Pure Gold)</button>
+          <button class="pill-btn" data-thread="crimson" data-i18n="threadCrimson">Kumkum Silk</button>
+          <button class="pill-btn" data-thread="kesar" data-i18n="threadKesar">Kesar Saffron Silk</button>
+        </div>
+      </div>
+
+      <!-- 3. Gem & Bead Accents -->
+      <div class="control-group">
+        <label class="control-label" data-i18n="beadLabel">Bead &amp; Gem Accents</label>
+        <div class="pill-options" id="bead-options">
+          <button class="pill-btn active" data-bead="pearl" data-i18n="beadPearl">Mukta (Pearls &amp; Gold)</button>
+          <button class="pill-btn" data-bead="ruby" data-i18n="beadRuby">Manikya (Ruby Stones)</button>
+          <button class="pill-btn" data-bead="emerald" data-i18n="beadEmerald">Marakata (Emerald Gems)</button>
+        </div>
+      </div>
+
+      <!-- 4. Sibling Name Inscription -->
+      <div class="control-group">
+        <label class="control-label" data-i18n="nameInscription">Sibling Name Inscription (Optional)</label>
+        <input
+          type="text"
+          id="engraving-text"
+          class="input-field"
+          placeholder="e.g. Rahul, Sneha, Bhai, Di"
+          data-i18n-placeholder="nameInscriptionPlaceholder"
+          maxlength="18"
+        />
+      </div>
+
+      <div class="design-summary-box">
+        <span class="summary-symbol">ॐ</span>
+        <p data-i18n="studioRealtimeNote">Your sanctified Raksha Sutra updates in real time. You can preserve this design and attach it to your private Sibling Letter below.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rakhi-studio-section {
+    padding: 2.5rem 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-desc {
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .studio-workspace {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .canvas-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  #rakhi-canvas {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 1/1;
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+
+  .canvas-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .studio-controls-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .control-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .pill-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .pill-btn {
+    padding: 0.45rem 0.9rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .pill-btn:hover {
+    color: var(--text-main);
+    border-color: var(--border-medium);
+  }
+
+  .pill-btn.active {
+    background: var(--surface-3);
+    border-color: var(--border-gold);
+    color: var(--text-gold);
+    font-weight: 600;
+  }
+
+  .design-summary-box {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1.1rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .summary-symbol {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.3rem;
+    color: var(--accent-gold);
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .studio-workspace {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .rakhi-studio-section {
+      padding: 1.75rem 1rem;
+    }
+    .canvas-actions .btn-secondary {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import { soundEngine } from '../utils/audio';
+
+  const canvas = document.getElementById('rakhi-canvas') as HTMLCanvasElement;
+  let ctx: CanvasRenderingContext2D | null = null;
+  if (canvas) ctx = canvas.getContext('2d');
+
+  let state = {
+    motif: 'om',
+    thread: 'moli',
+    bead: 'pearl',
+    engraving: '',
+  };
+
+  const nameInput = document.getElementById('engraving-text') as HTMLInputElement;
+  const downloadBtn = document.getElementById('download-rakhi-btn');
+  const randomBtn = document.getElementById('randomize-rakhi-btn');
+
+  function initPillGroup(containerId: string, stateKey: keyof typeof state) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const btns = container.querySelectorAll('.pill-btn');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state[stateKey] = btn.getAttribute(`data-${stateKey}`) || '';
+        soundEngine.playTempleBell(1.6);
+        drawRakhi();
+      });
+    });
+  }
+
+  initPillGroup('motif-options', 'motif');
+  initPillGroup('thread-options', 'thread');
+  initPillGroup('bead-options', 'bead');
+
+  nameInput?.addEventListener('input', (e) => {
+    state.engraving = (e.target as HTMLInputElement).value;
+    drawRakhi();
+  });
+
+  // Procedural 2D Canvas Rakhi Renderer
+  function drawRakhi() {
+    if (!ctx || !canvas) return;
+    const w = canvas.width;
+    const h = canvas.height;
+    const cx = w / 2;
+    const cy = h / 2;
+
+    ctx.clearRect(0, 0, w, h);
+
+    // 1. Draw Threads / Moli Strands
+    drawThreads(ctx, cx, cy, w, state.thread);
+
+    // 2. Draw Side Beads & Pearls
+    drawBeads(ctx, cx, cy, state.bead);
+
+    // 3. Draw Centerpiece Base
+    drawCenterBase(ctx, cx, cy);
+
+    // 4. Draw Motif
+    drawMotif(ctx, cx, cy, state.motif);
+
+    // 5. Draw Inscription text if present
+    if (state.engraving.trim()) {
+      drawEngraving(ctx, cx, cy, state.engraving.trim());
+    }
+  }
+
+  function drawThreads(c: CanvasRenderingContext2D, cx: number, cy: number, w: number, type: string) {
+    c.save();
+    c.lineWidth = 6;
+    c.lineCap = 'round';
+
+    if (type === 'moli') {
+      // Dual strand red & yellow twist
+      c.strokeStyle = '#D32F2F';
+      c.beginPath();
+      c.moveTo(20, cy - 3);
+      c.lineTo(w - 20, cy - 3);
+      c.stroke();
+
+      c.strokeStyle = '#FFD700';
+      c.beginPath();
+      c.moveTo(20, cy + 3);
+      c.lineTo(w - 20, cy + 3);
+      c.stroke();
+    } else if (type === 'zari') {
+      // Golden Zari shimmer
+      c.strokeStyle = '#FFE082';
+      c.shadowColor = '#FFD54F';
+      c.shadowBlur = 10;
+      c.beginPath();
+      c.moveTo(20, cy);
+      c.lineTo(w - 20, cy);
+      c.stroke();
+    } else if (type === 'crimson') {
+      c.strokeStyle = '#B71C1C';
+      c.beginPath();
+      c.moveTo(20, cy);
+      c.lineTo(w - 20, cy);
+      c.stroke();
+    } else {
+      // Kesar Saffron
+      c.strokeStyle = '#FF8F00';
+      c.beginPath();
+      c.moveTo(20, cy);
+      c.lineTo(w - 20, cy);
+      c.stroke();
+    }
+    c.restore();
+  }
+
+  function drawBeads(c: CanvasRenderingContext2D, cx: number, cy: number, type: string) {
+    const offsets = [-140, -110, -80, 80, 110, 140];
+    offsets.forEach((ox, idx) => {
+      c.save();
+      c.beginPath();
+      const r = idx % 2 === 0 ? 10 : 7;
+      c.arc(cx + ox, cy, r, 0, Math.PI * 2);
+
+      if (type === 'pearl') {
+        const grad = c.createRadialGradient(cx + ox - 2, cy - 2, 1, cx + ox, cy, r);
+        grad.addColorStop(0, '#FFFFFF');
+        grad.addColorStop(0.7, '#E0E0E0');
+        grad.addColorStop(1, '#BDBDBD');
+        c.fillStyle = grad;
+      } else if (type === 'ruby') {
+        const grad = c.createRadialGradient(cx + ox - 2, cy - 2, 1, cx + ox, cy, r);
+        grad.addColorStop(0, '#FF5252');
+        grad.addColorStop(1, '#B71C1C');
+        c.fillStyle = grad;
+      } else {
+        const grad = c.createRadialGradient(cx + ox - 2, cy - 2, 1, cx + ox, cy, r);
+        grad.addColorStop(0, '#69F0AE');
+        grad.addColorStop(1, '#00796B');
+        c.fillStyle = grad;
+      }
+
+      c.shadowColor = 'rgba(0,0,0,0.5)';
+      c.shadowBlur = 4;
+      c.fill();
+      c.restore();
+    });
+  }
+
+  function drawCenterBase(c: CanvasRenderingContext2D, cx: number, cy: number) {
+    c.save();
+    // Outer Petals / Sunburst
+    const petals = 16;
+    for (let i = 0; i < petals; i++) {
+      const angle = (i * Math.PI * 2) / petals;
+      const px = cx + Math.cos(angle) * 52;
+      const py = cy + Math.sin(angle) * 52;
+      c.beginPath();
+      c.arc(px, py, 11, 0, Math.PI * 2);
+      c.fillStyle = i % 2 === 0 ? '#FF8F00' : '#D32F2F';
+      c.fill();
+    }
+
+    // Golden Rim
+    c.beginPath();
+    c.arc(cx, cy, 54, 0, Math.PI * 2);
+    const grad = c.createRadialGradient(cx, cy, 10, cx, cy, 54);
+    grad.addColorStop(0, '#FFE082');
+    grad.addColorStop(0.5, '#FFB300');
+    grad.addColorStop(1, '#8D6E63');
+    c.fillStyle = grad;
+    c.shadowColor = '#FFB300';
+    c.shadowBlur = 18;
+    c.fill();
+
+    // Inner Crimson Core
+    c.beginPath();
+    c.arc(cx, cy, 42, 0, Math.PI * 2);
+    c.fillStyle = '#8B0000';
+    c.fill();
+    c.restore();
+  }
+
+  function drawMotif(c: CanvasRenderingContext2D, cx: number, cy: number, type: string) {
+    c.save();
+    c.textAlign = 'center';
+    c.textBaseline = 'middle';
+
+    if (type === 'om') {
+      c.font = 'bold 36px "Noto Serif Devanagari", "Rozha One", serif';
+      c.fillStyle = '#FFE082';
+      c.shadowColor = '#FFB300';
+      c.shadowBlur = 12;
+      c.fillText('ॐ', cx, cy + 2);
+    } else if (type === 'swastika') {
+      c.font = 'bold 34px "Noto Serif Devanagari", serif';
+      c.fillStyle = '#FFE082';
+      c.shadowColor = '#FFB300';
+      c.shadowBlur = 12;
+      c.fillText('卐', cx, cy + 2);
+    } else if (type === 'mandala') {
+      c.strokeStyle = '#FFE082';
+      c.lineWidth = 2;
+      c.beginPath();
+      c.arc(cx, cy, 28, 0, Math.PI * 2);
+      c.stroke();
+
+      for (let i = 0; i < 8; i++) {
+        const ang = (i * Math.PI * 2) / 8;
+        c.beginPath();
+        c.arc(cx + Math.cos(ang) * 16, cy + Math.sin(ang) * 16, 5, 0, Math.PI * 2);
+        c.fillStyle = '#FFD54F';
+        c.fill();
+      }
+
+      c.beginPath();
+      c.arc(cx, cy, 7, 0, Math.PI * 2);
+      c.fillStyle = '#FFFFFF';
+      c.shadowColor = '#FFD54F';
+      c.shadowBlur = 8;
+      c.fill();
+    } else if (type === 'kundan') {
+      c.fillStyle = '#E0F7FA';
+      c.beginPath();
+      c.moveTo(cx, cy - 24);
+      c.lineTo(cx + 24, cy);
+      c.lineTo(cx, cy + 24);
+      c.lineTo(cx - 24, cy);
+      c.closePath();
+      c.shadowColor = '#80DEEA';
+      c.shadowBlur = 12;
+      c.fill();
+      c.strokeStyle = '#FFD700';
+      c.lineWidth = 3;
+      c.stroke();
+    } else {
+      // Rudraksha
+      c.beginPath();
+      c.arc(cx, cy, 22, 0, Math.PI * 2);
+      const rGrad = c.createRadialGradient(cx - 4, cy - 4, 3, cx, cy, 22);
+      rGrad.addColorStop(0, '#8D6E63');
+      rGrad.addColorStop(1, '#3E2723');
+      c.fillStyle = rGrad;
+      c.fill();
+      c.strokeStyle = '#D7CCC8';
+      c.lineWidth = 2;
+      c.stroke();
+    }
+    c.restore();
+  }
+
+  function drawEngraving(c: CanvasRenderingContext2D, cx: number, cy: number, name: string) {
+    c.save();
+    c.font = 'bold 12px "Outfit", sans-serif';
+    c.fillStyle = '#FFF8E1';
+    c.textAlign = 'center';
+    c.textBaseline = 'top';
+    c.shadowColor = 'rgba(0,0,0,0.8)';
+    c.shadowBlur = 4;
+    c.fillText(name.toUpperCase(), cx, cy + 65);
+    c.restore();
+  }
+
+  drawRakhi();
+
+  downloadBtn?.addEventListener('click', () => {
+    if (!canvas) return;
+    const link = document.createElement('a');
+    link.download = `raksha-sutra-${Date.now()}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    soundEngine.playCelebrationChime();
+  });
+
+  randomBtn?.addEventListener('click', () => {
+    const motifs = ['om', 'swastika', 'mandala', 'kundan', 'rudraksha'];
+    const threads = ['moli', 'zari', 'crimson', 'kesar'];
+    const beads = ['pearl', 'ruby', 'emerald'];
+
+    state.motif = motifs[Math.floor(Math.random() * motifs.length)];
+    state.thread = threads[Math.floor(Math.random() * threads.length)];
+    state.bead = beads[Math.floor(Math.random() * beads.length)];
+
+    ['motif', 'thread', 'bead'].forEach(k => {
+      const container = document.getElementById(`${k}-options`);
+      container?.querySelectorAll('.pill-btn').forEach(btn => {
+        if (btn.getAttribute(`data-${k}`) === state[k as keyof typeof state]) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    });
+
+    drawRakhi();
+    soundEngine.playTempleBell(1.2);
+  });
+</script>

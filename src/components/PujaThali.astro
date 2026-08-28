@@ -1,0 +1,1078 @@
+---
+// PujaThali.astro - Sacred Puja Vidhi, Aarti & Raksha Sutra Ceremony
+---
+
+<section class="glass-panel ceremony-section" id="ceremony-section">
+  <div class="section-header-block">
+    <div class="section-badge">
+      <span class="badge-symbol">ॐ</span>
+      <span data-i18n="thaliBadge">Pavitra Puja Vidhi &amp; Aarti</span>
+    </div>
+    <h2 class="section-title" data-i18n="thaliTitle">Auspicious Raksha Bandhan Ceremony</h2>
+    <p class="section-desc" data-i18n="thaliDesc">
+      Participate in the sanctified Vedic ritual. Experience each sacred step: Deepa Prajvalana, Aarti Parikrama, Kumkum-Akshata Tilak, Mithai Arpan, and tying the holy Raksha Sutra.
+    </p>
+  </div>
+
+  <!-- Interactive Ceremony Step Navigation Bar -->
+  <div class="ceremony-stepper-container">
+    <div class="ceremony-stepper" role="tablist">
+      <button class="step-nav-btn active" id="step-nav-1" data-step="1">
+        <span class="step-num">1</span>
+        <span class="step-text" data-i18n="step1">Deepa Prajvalana</span>
+      </button>
+      <button class="step-nav-btn" id="step-nav-2" data-step="2">
+        <span class="step-num">2</span>
+        <span class="step-text" data-i18n="step2">Aarti Parikrama</span>
+      </button>
+      <button class="step-nav-btn" id="step-nav-3" data-step="3">
+        <span class="step-num">3</span>
+        <span class="step-text" data-i18n="step3">Tilak &amp; Akshata</span>
+      </button>
+      <button class="step-nav-btn" id="step-nav-4" data-step="4">
+        <span class="step-num">4</span>
+        <span class="step-text" data-i18n="step4">Mithai Arpan</span>
+      </button>
+      <button class="step-nav-btn" id="step-nav-5" data-step="5">
+        <span class="step-num">5</span>
+        <span class="step-text" data-i18n="step5">Raksha Bandhan</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Interactive Ceremony Stage -->
+  <div class="ceremony-stage-grid">
+    
+    <!-- Left Stage: Sacred Brass Puja Thali -->
+    <div class="thali-stage-wrapper">
+      <!-- Particle Canvas for Aarti Trails and Petal Shower -->
+      <canvas id="ceremony-canvas"></canvas>
+
+      <div class="puja-thali-plate" id="thali-plate">
+        <div class="thali-rim-ring"></div>
+        <div class="thali-inner-ring"></div>
+        
+        <!-- Sacred Vedic Mandala & Swastika -->
+        <div class="thali-mandala">
+          <svg viewBox="0 0 100 100" class="mandala-svg" aria-hidden="true">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,215,0,0.3)" stroke-width="1.5" stroke-dasharray="2 2" />
+            <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(255,215,0,0.4)" stroke-width="1.2" />
+            <path d="M50 20 V80 M20 50 H80 M50 20 H66 M50 80 H34 M20 50 V34 M80 50 V66" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" />
+            <circle cx="36" cy="36" r="2.2" fill="#DC2626" />
+            <circle cx="64" cy="36" r="2.2" fill="#DC2626" />
+            <circle cx="36" cy="64" r="2.2" fill="#DC2626" />
+            <circle cx="64" cy="64" r="2.2" fill="#DC2626" />
+          </svg>
+        </div>
+
+        <!-- Thali Item 1: Pavitra Deepa (Sacred Diya) -->
+        <div class="thali-slot slot-diya" id="item-diya" title="Click to ignite sacred Deepa">
+          <div class="diya-fixture">
+            <div class="diya-glow-aura" id="diya-aura"></div>
+            <div class="diya-flame" id="diya-flame"></div>
+            <div class="diya-clay-body"></div>
+          </div>
+          <span class="slot-caption" id="diya-caption" data-i18n="thaliDiyaCaption">Ignite Deepa</span>
+        </div>
+
+        <!-- Thali Item 2: Consecrated Kumkum & Akshata -->
+        <div class="thali-slot slot-roli" id="item-roli" title="Click to apply Kumkum-Akshata Tilak">
+          <div class="katori-brass">
+            <div class="kumkum-paste">
+              <span class="akshata-grain g1"></span>
+              <span class="akshata-grain g2"></span>
+              <span class="akshata-grain g3"></span>
+            </div>
+          </div>
+          <span class="slot-caption" data-i18n="thaliRoliCaption">Kumkum &amp; Akshata</span>
+        </div>
+
+        <!-- Thali Item 3: Chandan Katori -->
+        <div class="thali-slot slot-chandan" id="item-chandan" title="Sandalwood paste">
+          <div class="katori-brass">
+            <div class="chandan-paste"></div>
+          </div>
+          <span class="slot-caption" data-i18n="thaliChandanCaption">Chandan Paste</span>
+        </div>
+
+        <!-- Thali Item 4: Mithai Arpan (Traditional Sweets) -->
+        <div class="thali-slot slot-mithai" id="item-mithai" title="Click to offer traditional Mithai">
+          <div class="katori-brass">
+            <div class="kaju-katli-piece">
+              <div class="silver-varak-layer"></div>
+            </div>
+          </div>
+          <span class="slot-caption" data-i18n="thaliMithaiCaption">Mithai Arpan</span>
+        </div>
+
+        <!-- Thali Item 5: Consecrated Raksha Sutra -->
+        <div class="thali-slot slot-sutra" id="item-sutra" title="Click to tie sacred Raksha Sutra">
+          <div class="sutra-ornament">
+            <div class="sutra-strand-l"></div>
+            <div class="sutra-om-core">
+              <span class="sutra-om-text">ॐ</span>
+            </div>
+            <div class="sutra-strand-r"></div>
+          </div>
+          <span class="slot-caption" data-i18n="thaliSutraCaption">Raksha Sutra</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Stage: Live Consecration Projection & Vedic Significance -->
+    <div class="ceremony-info-wrapper">
+      
+      <!-- Live Consecration Altar Box -->
+      <div class="consecration-altar-card">
+        <div class="altar-header">
+          <span class="altar-badge-label" data-i18n="sanctifiedAltar">SANCTIFIED ALTAR</span>
+          <span class="altar-status-indicator" id="altar-status-dot"></span>
+        </div>
+
+        <div class="altar-display-chamber">
+          <div class="virtual-arm-canvas">
+            <div class="sacred-tilak-mark" id="altar-tilak"></div>
+            <div class="sacred-tied-sutra" id="altar-tied-sutra">
+              <div class="sutra-wrist-band"></div>
+              <div class="sutra-wrist-core">
+                <span class="sutra-om-text">ॐ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="altar-instruction-box">
+          <div class="instruction-title" id="instruction-step-title">Step 1: Deepa Prajvalana</div>
+          <p class="instruction-desc" id="instruction-step-desc">
+            Click on the <strong>Deepa</strong> to kindle the sacred flame, inviting light, purity, and divine blessings into the ceremony.
+          </p>
+        </div>
+      </div>
+
+      <!-- Vedic Significance Card -->
+      <div class="vedic-significance-card">
+        <div class="significance-header">
+          <span class="significance-symbol">卐</span>
+          <h4 data-i18n="vedicSignificanceHeader">Vedic Significance</h4>
+        </div>
+        <p class="significance-body" id="significance-text">
+          Deepa Prajvalana symbolizes the dispelling of darkness and the awakening of inner wisdom and divine grace.
+        </p>
+      </div>
+
+      <!-- Action Controls -->
+      <div class="ceremony-action-bar">
+        <button type="button" class="btn-primary" id="btn-perform-step" data-i18n="btnPerformStep">
+          Proceed with Step
+        </button>
+        <button type="button" class="btn-secondary" id="btn-auto-all" data-i18n="btnAutoAll">
+          Complete Full Puja Vidhi
+        </button>
+        <button type="button" class="btn-secondary" id="btn-reset-ceremony" data-i18n="btnReset">
+          Reset
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .ceremony-section {
+    padding: 2.5rem 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-header-block {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Stepper Navigation */
+  .ceremony-stepper-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .ceremony-stepper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    background: var(--surface-sunken);
+    padding: 0.35rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .step-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.95rem;
+    background: transparent;
+    border-radius: var(--radius-full);
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .step-nav-btn:hover {
+    color: var(--text-main);
+    background: var(--surface-1);
+  }
+
+  .step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--surface-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .step-nav-btn.active {
+    background: var(--surface-1);
+    border-color: var(--border-gold);
+    color: var(--accent-kumkum);
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .step-nav-btn.active .step-num {
+    background: var(--accent-gold);
+    color: #FFFFFF;
+  }
+
+  .step-nav-btn.completed {
+    color: #15803D;
+    font-weight: 600;
+  }
+
+  .step-nav-btn.completed .step-num {
+    background: #15803D;
+    color: #FFFFFF;
+  }
+
+  /* Stage Grid */
+  .ceremony-stage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  /* Left Stage: Thali */
+  .thali-stage-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 380px;
+  }
+
+  #ceremony-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Brass Puja Thali */
+  .puja-thali-plate {
+    position: relative;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #D97706 0%, #B45309 50%, #78350F 100%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 0 24px rgba(0, 0, 0, 0.7);
+    border: 3px solid #FDE68A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .thali-rim-ring {
+    position: absolute;
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    border: 1px dashed rgba(254, 243, 199, 0.35);
+    pointer-events: none;
+  }
+
+  .thali-inner-ring {
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    pointer-events: none;
+  }
+
+  .thali-mandala {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    pointer-events: none;
+    opacity: 0.85;
+  }
+
+  .mandala-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Thali Slots */
+  .thali-slot {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+    user-select: none;
+    z-index: 5;
+  }
+
+  .thali-slot:hover {
+    transform: scale(1.08);
+  }
+
+  .slot-caption {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #1E293B;
+    background: #FEF3C7;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-full);
+    margin-top: 0.3rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    white-space: nowrap;
+  }
+
+  /* Diya Fixture */
+  .slot-diya {
+    bottom: 22px;
+  }
+
+  .diya-fixture {
+    position: relative;
+    width: 48px;
+    height: 32px;
+  }
+
+  .diya-glow-aura {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.5) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .diya-glow-aura.lit {
+    opacity: 1;
+  }
+
+  .diya-clay-body {
+    position: absolute;
+    bottom: 0;
+    width: 48px;
+    height: 22px;
+    background: #9A3412;
+    border-radius: 0 0 24px 24px;
+    border-top: 2px solid #FDE68A;
+  }
+
+  .diya-flame {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 24px;
+    background: radial-gradient(circle, #FFFFFF 15%, #FDE047 50%, #EA580C 90%);
+    border-radius: 50% 50% 20% 20%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 0 14px #F59E0B;
+  }
+
+  .diya-flame.lit {
+    opacity: 1;
+  }
+
+  /* Katoris */
+  .katori-brass {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #B45309;
+    border: 2px solid #FDE68A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .slot-roli {
+    top: 24px;
+    left: 32px;
+  }
+
+  .kumkum-paste {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #DC2626;
+    position: relative;
+  }
+
+  .akshata-grain {
+    position: absolute;
+    width: 3px;
+    height: 7px;
+    background: #FFF;
+    border-radius: 40%;
+  }
+  .g1 { top: 6px; left: 10px; transform: rotate(20deg); }
+  .g2 { top: 14px; left: 18px; transform: rotate(-35deg); }
+  .g3 { top: 18px; left: 8px; transform: rotate(55deg); }
+
+  .slot-chandan {
+    bottom: 85px;
+    left: 18px;
+  }
+
+  .chandan-paste {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #FDE68A;
+  }
+
+  .slot-mithai {
+    top: 24px;
+    right: 32px;
+  }
+
+  .kaju-katli-piece {
+    width: 24px;
+    height: 24px;
+    background: #E2E8F0;
+    transform: rotate(45deg);
+    position: relative;
+    border: 1px solid #CBD5E1;
+  }
+
+  .silver-varak-layer {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    background: #FFFFFF;
+    opacity: 0.9;
+  }
+
+  .slot-sutra {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .sutra-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sutra-strand-l, .sutra-strand-r {
+    width: 24px;
+    height: 3px;
+    background: linear-gradient(90deg, #DC2626, #F59E0B);
+  }
+
+  .sutra-om-core {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #B45309;
+    border: 2px solid #FDE68A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sutra-om-text {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #FEF3C7;
+  }
+
+  /* Aarti Rotating Keyframe */
+  @keyframes aartiSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .aarti-rotating {
+    animation: aartiSpin 4.5s linear infinite;
+  }
+
+  /* Right Stage: Info & Altar */
+  .ceremony-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .consecration-altar-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+
+  .altar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .altar-badge-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--text-gold);
+  }
+
+  .altar-status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22C55E;
+  }
+
+  .altar-display-chamber {
+    height: 120px;
+    background: var(--surface-sunken);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .virtual-arm-canvas {
+    width: 80px;
+    height: 110px;
+    background: #D97706;
+    border-radius: 40px 40px 10px 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sacred-tilak-mark {
+    width: 10px;
+    height: 20px;
+    background: #DC2626;
+    border-radius: 50% 50% 20% 20%;
+    position: absolute;
+    top: 16px;
+    opacity: 0;
+    transform: scale(0.4);
+    transition: all 0.3s ease;
+  }
+
+  .sacred-tilak-mark.applied {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .sacred-tied-sutra {
+    position: absolute;
+    bottom: 16px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.2);
+    transition: all 0.4s ease;
+  }
+
+  .sacred-tied-sutra.tied {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .sutra-wrist-band {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #DC2626, #F59E0B);
+  }
+
+  .sutra-wrist-core {
+    position: relative;
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #B45309;
+    border: 2px solid #FDE68A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .instruction-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.25rem;
+  }
+
+  .instruction-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* Significance Card */
+  .vedic-significance-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+  }
+
+  .significance-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .significance-symbol {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1rem;
+    color: var(--accent-gold);
+  }
+
+  .significance-header h4 {
+    font-size: 0.85rem;
+    color: var(--text-gold);
+    font-weight: 600;
+  }
+
+  .significance-body {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* Action Buttons */
+  .ceremony-action-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 900px) {
+    .ceremony-stage-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .ceremony-stepper-container {
+      width: 100%;
+      overflow: hidden;
+    }
+    .ceremony-stepper {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      justify-content: flex-start;
+      border-radius: var(--radius-md);
+      padding: 0.4rem 0.5rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .ceremony-stepper::-webkit-scrollbar {
+      display: none;
+    }
+    .step-nav-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.78rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .ceremony-section {
+      padding: 1.75rem 1rem;
+    }
+    .puja-thali-plate {
+      width: 270px;
+      height: 270px;
+    }
+    .thali-rim-ring {
+      width: 245px;
+      height: 245px;
+    }
+    .thali-inner-ring {
+      width: 185px;
+      height: 185px;
+    }
+    .slot-roli {
+      top: 16px;
+      left: 18px;
+    }
+    .slot-mithai {
+      top: 16px;
+      right: 18px;
+    }
+    .slot-chandan {
+      bottom: 65px;
+      left: 10px;
+    }
+    .ceremony-action-bar button {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import { soundEngine } from '../utils/audio';
+
+  const ceremonySteps = {
+    en: [
+      {
+        title: 'Step 1: Deepa Prajvalana',
+        desc: 'Click on the <strong>Deepa</strong> to kindle the sacred flame, inviting light, purity, and divine blessings into the ceremony.',
+        significance: 'Deepa Prajvalana symbolizes the dispelling of darkness and the awakening of inner wisdom and divine grace.',
+        itemKey: 'diya',
+      },
+      {
+        title: 'Step 2: Aarti Parikrama',
+        desc: 'Perform the circular Aarti veneration, sanctified with sacred temple bell resonance.',
+        significance: 'Aarti Parikrama creates a protective spiritual aura and invokes divine protection against all adversities.',
+        itemKey: 'aarti',
+      },
+      {
+        title: 'Step 3: Kumkum & Akshata Tilak',
+        desc: 'Apply the sacred Tilak made of pure Kumkum and unbroken Akshata consecrated on the forehead.',
+        significance: 'The Tilak on the Ajna Chakra enhances concentration, peace, and longevity; Akshata signifies unblemished prosperity.',
+        itemKey: 'roli',
+      },
+      {
+        title: 'Step 4: Mithai Arpan',
+        desc: 'Offer sacred festive Mithai to celebrate sweetness of affection and togetherness.',
+        significance: 'Mithai symbolizes the sweetness of affection, harmony, and gratitude between siblings.',
+        itemKey: 'mithai',
+      },
+      {
+        title: 'Step 5: Raksha Bandhan',
+        desc: 'Tie the sacred consecrated Raksha Sutra around the right wrist with prayers for protection and eternal love.',
+        significance: 'The Raksha Sutra is the sacred covenant of mutual protection, unconditional respect, and eternal familial love.',
+        itemKey: 'sutra',
+      },
+    ],
+    bn: [
+      {
+        title: 'প্রথম ধাপ: দীপ প্রজ্বলন',
+        desc: 'পবিত্র প্রদীপে ক্লিক করে <strong>মঙ্গল শিখা প্রজ্বলন</strong> করুন এবং পূজার আঙিনায় শুভ আলো ও দিব্য কৃপা আহ্বান করুন।',
+        significance: 'দীপ প্রজ্বলন অন্ধকারের বিনাশ ঘটিয়ে মনের অন্তর্জ্যোতি ও দেব কৃপাকে জাগ্রত করার শাশ্বত প্রতীক।',
+        itemKey: 'diya',
+      },
+      {
+        title: 'দ্বিতীয় ধাপ: আরতি পরিক্রমা',
+        desc: 'মন্দিরের পবিত্র ঘণ্টার মঙ্গল ধ্বনির সাথে থালি ঘুরিয়ে ভক্তিময় <strong>আরতি পরিক্রমা</strong> সম্পন্ন করুন।',
+        significance: 'আরতি পরিক্রমা সমস্ত অশুভ শক্তি দূর করে ভাই-বোনের জীবনে শুভ ও সুরক্ষার বলয় তৈরি করে।',
+        itemKey: 'aarti',
+      },
+      {
+        title: 'তৃতীয় ধাপ: চন্দন-তিলক ও অক্ষত',
+        desc: 'ভ্রাতৃ ললাটে খাঁটি কুমকুম, চন্দন ও অক্ষতের <strong>পবিত্র বিজয় তিলক</strong> অর্পণ করুন।',
+        significance: 'আজ্ঞাচক্রে তিলক মনঃসংযোগ, সুস্বাস্থ্য ও দীর্ঘায়ু বৃদ্ধি করে; অক্ষত অবিচল সমৃদ্ধির প্রতীক।',
+        itemKey: 'roli',
+      },
+      {
+        title: 'চতুর্থ ধাপ: মিষ্টি অর্পণ',
+        desc: 'স্নেহের মধুরতা ও ভালোবাসার উদযাপন হিসেবে <strong>মিষ্টি অর্পণ</strong> করুন।',
+        significance: 'মিষ্টি ভাই-বোনের মধুর সম্পর্ক, পারস্পরিক কৃতজ্ঞতা ও একাত্মতার অমৃতময় প্রতীক।',
+        itemKey: 'mithai',
+      },
+      {
+        title: 'পঞ্চম ধাপ: পবিত্র রাখীবন্ধন',
+        desc: 'মঙ্গল কামনার সাথে ডান হাতে <strong>পবিত্র রক্ষাসূত্র</strong> বেঁধে আজীবন সুরক্ষার সংকল্প নিন।',
+        significance: 'রক্ষাসূত্র হলো আজীবন পাশে থাকার, একে অপরকে রক্ষা করার এবং অবিচল শ্রদ্ধার পবিত্র অঙ্গীকার।',
+        itemKey: 'sutra',
+      },
+    ]
+  };
+
+  let currentStep = 1;
+  let isDiyaLit = false;
+  let isAartiActive = false;
+
+  const thaliPlate = document.getElementById('thali-plate');
+  const diyaItem = document.getElementById('item-diya');
+  const diyaFlame = document.getElementById('diya-flame');
+  const diyaAura = document.getElementById('diya-aura');
+  const diyaCaption = document.getElementById('diya-caption');
+  const roliItem = document.getElementById('item-roli');
+  const chandanItem = document.getElementById('item-chandan');
+  const mithaiItem = document.getElementById('item-mithai');
+  const sutraItem = document.getElementById('item-sutra');
+
+  const altarTilak = document.getElementById('altar-tilak');
+  const altarSutra = document.getElementById('altar-tied-sutra');
+  const instructionTitle = document.getElementById('instruction-step-title');
+  const instructionDesc = document.getElementById('instruction-step-desc');
+  const significanceText = document.getElementById('significance-text');
+
+  const btnPerformStep = document.getElementById('btn-perform-step');
+  const btnAutoAll = document.getElementById('btn-auto-all');
+  const btnReset = document.getElementById('btn-reset-ceremony');
+
+  const canvas = document.getElementById('ceremony-canvas') as HTMLCanvasElement;
+  let ctx: CanvasRenderingContext2D | null = null;
+  if (canvas) ctx = canvas.getContext('2d');
+
+  interface PetalParticle {
+    x: number;
+    y: number;
+    size: number;
+    color: string;
+    vx: number;
+    vy: number;
+    rotation: number;
+    vr: number;
+    alpha: number;
+  }
+  let petals: PetalParticle[] = [];
+
+  function triggerPetals() {
+    if (!canvas || !ctx) return;
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    const colors = ['#F59E0B', '#FBBF24', '#DC2626', '#FFFFFF'];
+    for (let i = 0; i < 50; i++) {
+      petals.push({
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        size: Math.random() * 6 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        vx: (Math.random() - 0.5) * 10,
+        vy: (Math.random() - 0.7) * 10,
+        rotation: Math.random() * Math.PI * 2,
+        vr: (Math.random() - 0.5) * 0.15,
+        alpha: 1.0,
+      });
+    }
+    renderPetals();
+  }
+
+  function renderPetals() {
+    if (!ctx || !canvas) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = petals.length - 1; i >= 0; i--) {
+      const p = petals[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.2;
+      p.rotation += p.vr;
+      p.alpha -= 0.015;
+
+      if (p.alpha <= 0) {
+        petals.splice(i, 1);
+        continue;
+      }
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation);
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, p.size, p.size * 0.6, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    if (petals.length > 0) requestAnimationFrame(renderPetals);
+  }
+
+  function updateStepUI(stepIndex: number) {
+    currentStep = stepIndex;
+    const lang = (localStorage.getItem('rb_lang') || 'en') as 'en' | 'bn';
+    const list = ceremonySteps[lang] || ceremonySteps.en;
+    const stepData = list[stepIndex - 1];
+
+    if (instructionTitle) instructionTitle.textContent = stepData.title;
+    if (instructionDesc) instructionDesc.innerHTML = stepData.desc;
+    if (significanceText) significanceText.textContent = stepData.significance;
+
+    for (let i = 1; i <= 5; i++) {
+      const navBtn = document.getElementById(`step-nav-${i}`);
+      if (navBtn) {
+        navBtn.classList.remove('active', 'completed');
+        if (i < stepIndex) navBtn.classList.add('completed');
+        else if (i === stepIndex) navBtn.classList.add('active');
+      }
+    }
+  }
+
+  window.addEventListener('languageChange', () => {
+    updateStepUI(currentStep);
+  });
+
+  function performDeepa() {
+    if (!isDiyaLit) {
+      isDiyaLit = true;
+      diyaFlame?.classList.add('lit');
+      diyaAura?.classList.add('lit');
+      if (diyaCaption) diyaCaption.textContent = 'Deepa Prajvalit';
+      soundEngine.playShimmer();
+      updateStepUI(2);
+    }
+  }
+
+  function performAarti() {
+    if (isAartiActive) return;
+    isAartiActive = true;
+    if (!isDiyaLit) performDeepa();
+
+    thaliPlate?.classList.add('aarti-rotating');
+    soundEngine.playTempleBell(1.0);
+    setTimeout(() => soundEngine.playTempleBell(1.2), 1200);
+
+    setTimeout(() => {
+      thaliPlate?.classList.remove('aarti-rotating');
+      isAartiActive = false;
+      updateStepUI(3);
+    }, 3800);
+  }
+
+  function performTilak() {
+    altarTilak?.classList.add('applied');
+    soundEngine.playShimmer();
+    updateStepUI(4);
+  }
+
+  function performMithai() {
+    soundEngine.playCelebrationChime();
+    triggerPetals();
+    updateStepUI(5);
+  }
+
+  function performSutra() {
+    altarSutra?.classList.add('tied');
+    soundEngine.playCelebrationChime();
+    triggerPetals();
+    if (instructionTitle) instructionTitle.textContent = 'Puja Vidhi Concluded';
+    if (instructionDesc) instructionDesc.innerHTML = 'The sacred Raksha Bandhan ritual is fully sanctified. May this sacred Raksha Sutra bring prosperity, health, and lifelong protection.';
+    for (let i = 1; i <= 5; i++) {
+      document.getElementById(`step-nav-${i}`)?.classList.add('completed');
+    }
+  }
+
+  diyaItem?.addEventListener('click', performDeepa);
+  roliItem?.addEventListener('click', performTilak);
+  chandanItem?.addEventListener('click', performTilak);
+  mithaiItem?.addEventListener('click', performMithai);
+  sutraItem?.addEventListener('click', performSutra);
+
+  btnPerformStep?.addEventListener('click', () => {
+    if (currentStep === 1) performDeepa();
+    else if (currentStep === 2) performAarti();
+    else if (currentStep === 3) performTilak();
+    else if (currentStep === 4) performMithai();
+    else if (currentStep === 5) performSutra();
+  });
+
+  for (let i = 1; i <= 5; i++) {
+    document.getElementById(`step-nav-${i}`)?.addEventListener('click', () => {
+      updateStepUI(i);
+    });
+  }
+
+  btnAutoAll?.addEventListener('click', async () => {
+    performDeepa();
+    await new Promise(r => setTimeout(r, 500));
+
+    performAarti();
+    await new Promise(r => setTimeout(r, 4000));
+
+    performTilak();
+    await new Promise(r => setTimeout(r, 800));
+
+    performMithai();
+    await new Promise(r => setTimeout(r, 800));
+
+    performSutra();
+  });
+
+  btnReset?.addEventListener('click', () => {
+    isDiyaLit = false;
+    isAartiActive = false;
+    diyaFlame?.classList.remove('lit');
+    diyaAura?.classList.remove('lit');
+    if (diyaCaption) diyaCaption.textContent = 'Ignite Deepa';
+    thaliPlate?.classList.remove('aarti-rotating');
+    altarTilak?.classList.remove('applied');
+    altarSutra?.classList.remove('tied');
+    updateStepUI(1);
+  });
+</script>

@@ -1,0 +1,712 @@
+---
+// EncryptedCapsule.astro - Consecrated Gupt Raksha Patra (End-to-End Encrypted Sibling Letter)
+---
+
+<section class="glass-panel capsule-section" id="capsule-section">
+  <div class="section-badge">
+    <span class="badge-symbol">ॐ</span>
+    <span data-i18n="capsuleBadge">Gupt Raksha Patra • End-to-End Encrypted</span>
+  </div>
+  <h2 class="section-title" data-i18n="capsuleTitle">Encrypted Sibling Letter &amp; Blessings</h2>
+  <p class="section-desc" data-i18n="capsuleDesc">
+    Seal a heartfelt message, sacred memories, and traditional shagun with AES-256-GCM encryption. 100% private to your browser.
+  </p>
+
+  <!-- Eye-Catching Promi Dedicated Sanctuary Card -->
+  <a href="/promi" class="promi-highlight-banner" title="Click to open Promi's dedicated Raksha Bandhan page">
+    <div class="promi-banner-left">
+      <div class="promi-banner-symbol">ॐ</div>
+      <div class="promi-banner-info">
+        <span class="promi-banner-tag" data-i18n="promiBannerTag">DEDICATED FOR PROMI</span>
+        <h4 class="promi-banner-title" data-i18n="promiBannerTitle">Personalized Raksha Sanctuary for Promi</h4>
+        <p class="promi-banner-desc" data-i18n="promiBannerDesc">Dedicated letter, custom engraved Raksha Sutra, sacred vows &amp; return wishes from Ranti</p>
+      </div>
+    </div>
+    <div class="promi-banner-action">
+      <span data-i18n="promiBannerBtn">Open Promi's Page</span>
+      <span class="promi-arrow">&rarr;</span>
+    </div>
+  </a>
+
+  <div class="preset-pill-bar">
+    <span class="preset-label" data-i18n="presetPromiLabel">Quick Presets for Promi:</span>
+    <button type="button" class="preset-btn" id="preset-promi-btn" data-theme="Deep Vedic Gratitude & Ashirwad" data-i18n="presetVedic">
+      Vedic Blessing
+    </button>
+    <button type="button" class="preset-btn" id="preset-promi-mischief-btn" data-theme="Childhood Partner-in-Crime, secret keeper, and sweet memories" data-i18n="presetMischief">
+      Childhood Mischief &amp; Secrets
+    </button>
+    <button type="button" class="preset-btn" id="preset-promi-shield-btn" data-theme="Unwavering shield, emotional strength, and lifelong protection" data-i18n="presetShield">
+      Unbreakable Shield &amp; Support
+    </button>
+  </div>
+
+  <form class="capsule-form" id="capsule-form">
+    <div class="form-grid">
+      <div class="control-group">
+        <label class="control-label" for="to-name" data-i18n="toLabel">To (Recipient Sibling Name)</label>
+        <input type="text" id="to-name" class="input-field" placeholder="e.g. Sneha / Rahul" data-i18n-placeholder="toPlaceholder" required />
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="from-name" data-i18n="fromLabel">From (Your Name)</label>
+        <input type="text" id="from-name" class="input-field" placeholder="e.g. Your Loving Brother / Sister" data-i18n-placeholder="fromPlaceholder" required />
+      </div>
+    </div>
+
+    <div class="form-grid">
+      <div class="control-group">
+        <label class="control-label" for="sibling-relation" data-i18n="relationLabel">Sacred Relationship</label>
+        <select id="sibling-relation" class="select-field">
+          <option value="Sister to Brother" data-i18n="relOption1">Sister to Brother (Bhagini to Bhrata)</option>
+          <option value="Brother to Sister" data-i18n="relOption2">Brother to Sister (Bhrata to Bhagini)</option>
+          <option value="Cousin Sibling Bond" data-i18n="relOption3">Cousin &amp; Family Sibling Bond</option>
+          <option value="Long Distance Sibling" data-i18n="relOption4">Long Distance Sibling Bond</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="shagun-voucher" data-i18n="shagunLabel">Traditional Shagun &amp; Ashirwad</label>
+        <select id="shagun-voucher" class="select-field">
+          <option value="Akhand Sneha &amp; Ashirwad: Lifelong blessings of health and prosperity" data-i18n="shagunOpt1">Akhand Sneha &amp; Ashirwad (Lifelong Blessings of Health &amp; Prosperity)</option>
+          <option value="Raksha Kavach: Steadfast commitment to stand by your side in every trial" data-i18n="shagunOpt2">Raksha Kavach (Unwavering Shield of Support in Every Trial)</option>
+          <option value="Uphaar &amp; Sweets: Special festive gift and traditional sweets on me" data-i18n="shagunOpt3">Festive Uphaar &amp; Sweets (Special Gift on Me)</option>
+          <option value="Samaya &amp; Smriti: A dedicated day of family celebration together" data-i18n="shagunOpt4">Samaya &amp; Smriti (Dedicated Day of Family Celebration)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Dedicated AI Context / Memory Input Field -->
+    <div class="control-group">
+      <label class="control-label" for="capsule-context-input">
+        <span data-i18n="contextFieldLabel">Personal Memory, Nickname or Context (Optional)</span>
+        <span class="label-hint" data-i18n="contextFieldHint">Share specific memories or inside jokes to personalize with Ranti</span>
+      </label>
+      <input
+        type="text"
+        id="capsule-context-input"
+        class="input-field"
+        placeholder="e.g. childhood mischief, late night chats, favorite food, special nicknames"
+        data-i18n-placeholder="contextFieldPlaceholder"
+      />
+    </div>
+
+    <div class="control-group">
+      <div class="message-label-row">
+        <label class="control-label" for="heartfelt-message" data-i18n="messageLabel">Heartfelt Message &amp; Memories</label>
+        <div class="ai-composer-action-group">
+          <select id="ai-tone-select" class="ai-tone-select" aria-label="Select AI Blessing Tone">
+            <option value="Vedic Sanskrit Blessing & Protection" data-i18n="toneVedic">Vedic Sanskrit Blessing</option>
+            <option value="Childhood Nostalgia & Gratitude" data-i18n="toneNostalgia">Childhood Nostalgia & Gratitude</option>
+            <option value="Short & Heartfelt Sibling Love" data-i18n="toneShort">Short &amp; Heartfelt Affection</option>
+            <option value="Long Distance Bond & Memories" data-i18n="toneDistance">Long Distance Bond</option>
+          </select>
+          <button type="button" class="btn-ai-composer" id="ai-blessing-btn" data-i18n="composeWithRanti">
+            Compose with Ranti
+          </button>
+        </div>
+      </div>
+      <textarea
+        id="heartfelt-message"
+        class="textarea-field"
+        rows="4"
+        placeholder="Write your traditional greetings, cherished childhood memories, gratitude, and prayers for well-being..."
+        data-i18n-placeholder="messagePlaceholder"
+        required
+      ></textarea>
+      <div class="ai-status-msg" id="ai-status" style="display: none;"></div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="capsule-passphrase" data-i18n="passphraseLabel">
+        Secret Decryption Passphrase (Optional)
+      </label>
+      <input
+        type="password"
+        id="capsule-passphrase"
+        class="input-field"
+        placeholder="Shared family secret (e.g. childhood nickname or memorable year)"
+        data-i18n-placeholder="passphrasePlaceholder"
+      />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-primary" id="seal-capsule-btn" data-i18n="btnSealCapsule">
+        Seal Letter &amp; Generate Private Link
+      </button>
+    </div>
+  </form>
+
+  <!-- Generated Link Output Box -->
+  <div class="capsule-result" id="capsule-result" style="display: none;">
+    <div class="result-header">
+      <span class="result-symbol">ॐ</span>
+      <h3>Your Sibling Letter is Sanctified and Encrypted</h3>
+    </div>
+    <p class="result-hint">Share this secure link with your sibling. The sanctified letter will decrypt and unfold in their browser:</p>
+    
+    <div class="link-box">
+      <input type="text" id="generated-url" class="input-field readonly-link" readonly />
+      <button type="button" class="btn-primary copy-btn" id="copy-link-btn">
+        Copy Link
+      </button>
+    </div>
+
+    <div class="share-actions">
+      <a href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary" id="whatsapp-share-btn">
+        Share via WhatsApp
+      </a>
+      <a href="#" target="_blank" class="btn-secondary" id="preview-card-btn">
+        Preview Decryption
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .capsule-section {
+    padding: 2.5rem 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-desc {
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Promi Highlight Banner */
+  .promi-highlight-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    background: var(--surface-1);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-md);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .promi-highlight-banner:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-gold);
+    box-shadow: var(--shadow-md);
+  }
+
+  .promi-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .promi-banner-symbol {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 1.5px solid var(--border-gold);
+    color: var(--accent-gold);
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .promi-banner-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent-kumkum);
+    margin-bottom: 0.2rem;
+  }
+
+  .promi-banner-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.2rem;
+  }
+
+  .promi-banner-desc {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .promi-banner-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-gold);
+    color: #FFFFFF;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6rem 1.1rem;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+    transition: background-color 0.15s ease;
+  }
+
+  .promi-highlight-banner:hover .promi-banner-action {
+    background: var(--accent-gold-light);
+  }
+
+  .promi-arrow {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  @media (max-width: 680px) {
+    .promi-highlight-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .promi-banner-action {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .preset-pill-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .preset-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .preset-btn {
+    background: var(--surface-2);
+    border: 1px solid var(--border-gold);
+    color: var(--text-gold);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .preset-btn:hover {
+    background: var(--surface-3);
+  }
+
+  .preset-link {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .preset-link:hover {
+    color: var(--text-main);
+  }
+
+  .capsule-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 760px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .control-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-main);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .label-hint {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .message-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .ai-composer-action-group {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .ai-tone-select {
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    border-radius: var(--radius-full);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.76rem;
+    outline: none;
+  }
+
+  .ai-tone-select:focus {
+    border-color: var(--accent-gold);
+  }
+
+  .btn-ai-composer {
+    background: var(--surface-2);
+    border: 1px solid var(--border-gold);
+    color: var(--text-gold);
+    border-radius: var(--radius-full);
+    padding: 0.35rem 0.9rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .btn-ai-composer:hover {
+    background: var(--surface-3);
+  }
+
+  .btn-ai-composer:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .ai-status-msg {
+    font-size: 0.82rem;
+    color: var(--text-gold);
+    padding: 0.25rem 0;
+  }
+
+  .form-actions {
+    margin-top: 0.5rem;
+  }
+
+  /* Result Box */
+  .capsule-result {
+    margin-top: 2rem;
+    padding: 1.75rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+
+  .result-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .result-symbol {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.3rem;
+    color: var(--accent-gold);
+    font-weight: bold;
+  }
+
+  .result-header h3 {
+    color: var(--text-main);
+    font-size: 1.15rem;
+  }
+
+  .result-hint {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+  }
+
+  .link-box {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .readonly-link {
+    background: var(--surface-sunken);
+    color: var(--text-gold);
+    font-size: 0.85rem;
+  }
+
+  .share-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 650px) {
+    .capsule-section {
+      padding: 1.75rem 1rem;
+    }
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    .link-box {
+      flex-direction: column;
+    }
+    .share-actions a {
+      width: 100%;
+    }
+    .btn-primary {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import { encryptCapsule } from '../utils/crypto';
+  import { soundEngine } from '../utils/audio';
+
+  const form = document.getElementById('capsule-form') as HTMLFormElement;
+  const resultBox = document.getElementById('capsule-result');
+  const urlInput = document.getElementById('generated-url') as HTMLInputElement;
+  const copyBtn = document.getElementById('copy-link-btn');
+  const whatsappBtn = document.getElementById('whatsapp-share-btn') as HTMLAnchorElement;
+  const previewBtn = document.getElementById('preview-card-btn') as HTMLAnchorElement;
+  const toNameInput = document.getElementById('to-name') as HTMLInputElement;
+  const fromNameInput = document.getElementById('from-name') as HTMLInputElement;
+  const contextInput = document.getElementById('capsule-context-input') as HTMLInputElement;
+  const msgArea = document.getElementById('heartfelt-message') as HTMLTextAreaElement;
+  const aiBtn = document.getElementById('ai-blessing-btn') as HTMLButtonElement;
+  const aiStatus = document.getElementById('ai-status-indicator');
+
+  async function generatePromiAiBlessing(theme: string) {
+    if (toNameInput) toNameInput.value = 'Promi';
+    if (fromNameInput) fromNameInput.value = 'Ranti';
+    
+    if (aiStatus) {
+      aiStatus.style.display = 'block';
+      aiStatus.textContent = `Composing a sacred blessing for Promi...`;
+    }
+    if (aiBtn) aiBtn.disabled = true;
+
+    try {
+      const response = await fetch('/api/generate-blessing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          toName: 'Promi',
+          fromName: 'Ranti',
+          relation: 'Sister to Brother',
+          tone: theme,
+          customPrompt: `This is a personal message from Ranti to Promi. Keep it heartfelt, dignified, and incorporate ${theme}. Do not use emojis.`
+        }),
+      });
+
+      const data = await response.json() as { message?: string; error?: string };
+      if (response.ok && data.message) {
+        if (msgArea) {
+          msgArea.value = data.message;
+        }
+        if (aiStatus) {
+          aiStatus.textContent = 'Auspicious personalized blessing composed for Promi.';
+          setTimeout(() => {
+            aiStatus.style.display = 'none';
+          }, 3000);
+        }
+        soundEngine.playShimmer();
+      } else {
+        throw new Error(data.error || 'Failed to generate blessing');
+      }
+    } catch (err) {
+      if (msgArea) {
+        msgArea.value = `Dear Promi,\n\nMay this auspicious Shravana Purnima bring you endless joy, peace, health, and prosperity. On this sacred Raksha Bandhan, I reaffirm my lifelong commitment to protect, support, and cherish our sacred sibling bond.\n\nWith eternal love and blessings,\nRanti`;
+      }
+      if (aiStatus) {
+        aiStatus.textContent = 'Populated with traditional blessing.';
+        setTimeout(() => {
+          aiStatus.style.display = 'none';
+        }, 3000);
+      }
+    } finally {
+      if (aiBtn) aiBtn.disabled = false;
+    }
+  }
+
+  document.getElementById('preset-promi-btn')?.addEventListener('click', () => {
+    generatePromiAiBlessing('Vedic Sanskrit Blessing & Eternal Protection');
+  });
+
+  document.getElementById('preset-promi-mischief-btn')?.addEventListener('click', () => {
+    generatePromiAiBlessing('Childhood Mischief, Shared Secrets & Endearing Sister-Brother Bond');
+  });
+
+  document.getElementById('preset-promi-shield-btn')?.addEventListener('click', () => {
+    generatePromiAiBlessing('Unbreakable Shield of Protection, Deep Support & Lifelong Anchor');
+  });
+
+  // AI Blessing Generator with Gemini Backend
+  aiBtn?.addEventListener('click', async () => {
+    const to = (document.getElementById('to-name') as HTMLInputElement)?.value || '';
+    const from = (document.getElementById('from-name') as HTMLInputElement)?.value || '';
+    const relation = (document.getElementById('sibling-relation') as HTMLSelectElement)?.value || 'Sister to Brother';
+    const tone = (document.getElementById('ai-tone-select') as HTMLSelectElement)?.value || 'Vedic Sanskrit Blessing';
+    const rawContext = (contextInput?.value.trim() || msgArea?.value.trim() || '');
+    const lang = localStorage.getItem('rb_lang') || 'bn';
+
+    if (aiStatus) {
+      aiStatus.style.display = 'block';
+      aiStatus.textContent = lang === 'bn' ? 'রন্তির সাথে আপনার মনের ভাব সুন্দর করে সাজানো হচ্ছে...' : 'Composing personalized blessing with Ranti...';
+    }
+    aiBtn.disabled = true;
+
+    try {
+      const response = await fetch('/api/generate-blessing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          toName: to,
+          fromName: from,
+          relation: relation,
+          tone: tone,
+          customPrompt: rawContext,
+          lang: lang,
+        }),
+      });
+
+      const data = await response.json() as { message?: string; error?: string };
+      if (data && data.message) {
+        if (msgArea) {
+          msgArea.value = data.message;
+        }
+        if (aiStatus) {
+          aiStatus.textContent = lang === 'bn' ? 'আপনার অনুভূতি দিয়ে আশীর্বাদ সুন্দরভাবে সাজানো হয়েছে।' : 'Auspicious blessing composed successfully.';
+          setTimeout(() => {
+            aiStatus.style.display = 'none';
+          }, 3000);
+        }
+        soundEngine.playShimmer();
+        aiBtn.disabled = false;
+        return;
+      }
+    } catch {
+      // Local fallback
+    }
+
+    let fallback = '';
+    const toDisplayName = to || (lang === 'bn' ? 'স্নেহের ভাই/বোন' : 'Dear Sibling');
+    const fromDisplayName = from || (lang === 'bn' ? 'রন্তি' : 'Ranti');
+
+    if (lang === 'bn') {
+      if (tone.includes('Vedic')) {
+        fallback = `প্রিয় ${toDisplayName},\n\n"येन बद्धो बली राजा दानवेन्द्रो महाबलः। तेन त्वां प्रतिबद्धनामि রক্ষে মা চল মা চল॥"\n\nশ্রাবণ পূর্ণিমার এই পরম শুভলগ্নে তোমার জন্য সর্বাঙ্গীন মঙ্গল, সুস্বাস্থ্য, পরম শান্তি ও সমৃদ্ধি কামনা করি।${rawContext ? ` আমাদের এই বিশেষ অনুভূতি: "${rawContext}"। ` : ' '}আমাদের এই পবিত্র ভাই-বোনের বন্ধন চিরকাল অটুট থাকুক।\n\nচিরন্তন স্নেহের সাথে,\n${fromDisplayName}`;
+      } else {
+        fallback = `স্নেহের ${toDisplayName},\n\nরাখীবন্ধনের এই পবিত্র দিনে তোমাকে জানাই আন্তরিক ভালোবাসা ও শুভকামনা।${rawContext ? ` মনে পড়ে: "${rawContext}"। ` : ' '}শৈশবের মধুর স্মৃতি আর আমাদের অটুট বিশ্বাস আমার জীবনের সেরা আশীর্বাদ। জীবনের প্রতিটি ক্ষেত্রে সবসময় তোমার পাশে থাকার অঙ্গীকার রইল।\n\nস্নেহ ও ভালোবাসার সাথে,\n${fromDisplayName}`;
+      }
+    } else {
+      if (tone.includes('Vedic')) {
+        fallback = `Dear ${toDisplayName},\n\n"येन बद्धो बली राजा दानवेन्द्रो महाबलः। तेन त्वां प्रतिबद्धनामि रक्षे मा चल मा चल॥"\n\nOn this sacred Shravana Purnima, I pray for your eternal peace, radiant health, and boundless prosperity.${rawContext ? ` Cherishing this memory: "${rawContext}". ` : ' '}May divine protection forever shield our sacred bond.\n\nWith eternal blessings,\n${fromDisplayName}`;
+      } else {
+        fallback = `Dearest ${toDisplayName},\n\nOn this joyous occasion of Raksha Bandhan, I celebrate our cherished bond of unconditional love, shared laughter, and lifelong trust.${rawContext ? ` Remembering: "${rawContext}". ` : ' '}May your journey ahead be blessed with immense joy and triumph.\n\nWith all my love,\n${fromDisplayName}`;
+      }
+    }
+
+    if (msgArea) msgArea.value = fallback;
+    if (aiStatus) {
+      aiStatus.textContent = lang === 'bn' ? 'আপনার অনুভূতি দিয়ে আশীর্বাদ সুন্দরভাবে সাজানো হয়েছে।' : 'Auspicious blessing composed successfully.';
+      setTimeout(() => {
+        aiStatus.style.display = 'none';
+      }, 3000);
+    }
+    soundEngine.playShimmer();
+    aiBtn.disabled = false;
+  });
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const to = (document.getElementById('to-name') as HTMLInputElement).value;
+    const from = (document.getElementById('from-name') as HTMLInputElement).value;
+    const relation = (document.getElementById('sibling-relation') as HTMLSelectElement).value;
+    const voucher = (document.getElementById('shagun-voucher') as HTMLSelectElement).value;
+    const message = (document.getElementById('heartfelt-message') as HTMLTextAreaElement).value;
+    const customPass = (document.getElementById('capsule-passphrase') as HTMLInputElement).value;
+
+    const payload = {
+      to,
+      from,
+      relation,
+      message,
+      siblingVoucher: voucher,
+      date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+    };
+
+    const secretKey = customPass.trim() || 'CELESTIAL_RAKHI_2026_DEFAULT';
+
+    try {
+      const token = await encryptCapsule(payload, secretKey);
+      const isAutoDecrypt = !customPass.trim();
+      const origin = window.location.origin;
+      const cardUrl = `${origin}/card#token=${token}${isAutoDecrypt ? '&auto=1' : ''}`;
+
+      if (urlInput) urlInput.value = cardUrl;
+      if (previewBtn) previewBtn.href = cardUrl;
+      if (whatsappBtn) {
+        const text = encodeURIComponent(`Pranam ${to}. On the auspicious occasion of Raksha Bandhan, I have sanctified a private encrypted letter and sacred blessings for you. Open here: ${cardUrl}`);
+        whatsappBtn.href = `https://api.whatsapp.com/send?text=${text}`;
+      }
+
+      if (resultBox) {
+        resultBox.style.display = 'block';
+        resultBox.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      soundEngine.playCelebrationChime();
+    } catch (err) {
+      console.error(err);
+      alert('Failed to encrypt letter. Please try again.');
+    }
+  });
+
+  copyBtn?.addEventListener('click', async () => {
+    if (!urlInput) return;
+    try {
+      await navigator.clipboard.writeText(urlInput.value);
+      copyBtn.textContent = 'Copied to Clipboard';
+      soundEngine.playShimmer();
+      setTimeout(() => {
+        copyBtn.textContent = 'Copy Link';
+      }, 2000);
+    } catch {
+      urlInput.select();
+      document.execCommand('copy');
+    }
+  });
+</script>

@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import MuhuratClock from '../components/MuhuratClock.astro';
+import PujaThali from '../components/PujaThali.astro';
+import RakhiBuilder from '../components/RakhiBuilder.astro';
+import EncryptedCapsule from '../components/EncryptedCapsule.astro';
+import SiblingSLA from '../components/SiblingSLA.astro';
+---
+
+<Layout title="Raksha Bandhan • Sacred Bond of Protection & Eternal Blessings">
+  <Hero />
+  <MuhuratClock />
+  <PujaThali />
+  <RakhiBuilder />
+  <EncryptedCapsule />
+  <SiblingSLA />
+
+  <footer class="app-footer">
+    <div class="footer-divider"></div>
+    <p class="footer-title" data-i18n="footerTitle">Raksha Bandhan • The Eternal Sibling Bond</p>
+    <p class="footer-shloka" data-i18n="footerShloka">
+      "शुभं करोति कल्याणम् आरोग्यम् धनसंपदाम् • सन्तु सन्तु सदा सुखिनः"
+    </p>
+    <p class="footer-meta" data-i18n="footerMeta">
+      May divine grace, peace, and eternal affection forever protect and illuminate our sacred sibling bond.
+    </p>
+  </footer>
+</Layout>
+
+<style>
+  .app-footer {
+    text-align: center;
+    padding: 3rem 1rem 1.5rem;
+    color: var(--text-muted);
+  }
+
+  .footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
+    margin-bottom: 2rem;
+  }
+
+  .footer-title {
+    font-family: 'Cinzel Decorative', Georgia, serif;
+    font-size: 1.15rem;
+    color: var(--accent-gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-shloka {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1rem;
+    color: var(--accent-kumkum);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-meta {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+</style>

@@ -1,0 +1,1606 @@
+---
+// src/pages/promi.astro - Dedicated Personalized Raksha Bandhan Sanctuary for Promi & Ranti
+import Layout from '../layouts/Layout.astro';
+
+const promiMemories = [
+  { 
+    src: '/images/promi/promi-6.webp', 
+    title: 'Pavitra Deepa & Festive Blessings', 
+    subtitle: 'Shining bright with grace, devotion, and sacred auspiciousness.',
+    tag: 'FESTIVE RITUAL'
+  },
+  { 
+    src: '/images/promi/promi-5.webp', 
+    title: 'Joyful Sister & Nature Smiles', 
+    subtitle: 'Cherished moments of pure laughter and sisterly warmth.',
+    tag: 'CHERISHED SMILE'
+  },
+  { 
+    src: '/images/promi/promi-1.webp', 
+    title: 'Grace & Traditional Radiance', 
+    subtitle: 'The pride of our family and the heart of every festival.',
+    tag: 'SACRED BOND'
+  },
+  { 
+    src: '/images/promi/promi-4.webp', 
+    title: 'Childhood Wanderer & Companion', 
+    subtitle: 'Through all adventures, trips, and shared mischief.',
+    tag: 'PARTNER IN CRIME'
+  },
+  { 
+    src: '/images/promi/promi-2.webp', 
+    title: 'Eternal Sisterly Affection', 
+    subtitle: 'A lifelong bond protected by prayers and unconditional love.',
+    tag: 'RAKSHA KAVACH'
+  },
+];
+---
+
+<Layout title="For Promi • Sacred Sibling Sanctuary with Ranti">
+  <div class="promi-container">
+    
+    <!-- Top Sacred Header with Promi's Portrait -->
+    <div class="promi-header-block">
+      <div class="promi-portrait-aura">
+        <img src="/images/promi/promi-1.webp" alt="Promi" class="promi-avatar-img" />
+        <div class="portrait-gold-ring"></div>
+      </div>
+
+      <div class="section-badge">
+        <span class="badge-symbol">ॐ</span>
+        <span data-i18n="promiSanctuaryBadge">Dedicated Sibling Sanctuary</span>
+      </div>
+
+      <h1 class="promi-main-title" data-i18n="promiMainTitleName">
+        Dearest Promi,
+      </h1>
+      <p class="promi-sub-title" data-i18n="promiSubTitle">
+        A consecrated Raksha Bandhan sanctuary handcrafted with eternal love, cherished childhood smiles, and endless blessings from your brother Ranti.
+      </p>
+    </div>
+
+    <!-- Sacred Shloka Banner -->
+    <div class="shloka-banner promi-shloka-card">
+      <p class="shloka-text">
+        येन बद्धो बली राजा दानवेन्द्रो महाबलः।<br />
+        तेन त्वां प्रतिबद्धनामि रक्षे मा चल मा चल॥
+      </p>
+      <p class="shloka-meaning" data-i18n="promiShlokaMeaning">
+        "May the sacred bond of protection that shields the universe guard and bless you, Promi, in every step of your life."
+      </p>
+    </div>
+
+    <!-- 5-Tab Interactive Experience for Promi -->
+    <div class="promi-tab-nav">
+      <button class="promi-tab-btn active" id="tab-btn-letter" data-tab="letter" data-i18n="tabLetter">
+        Ranti's Letter
+      </button>
+      <button class="promi-tab-btn" id="tab-btn-memories" data-tab="memories" data-i18n="tabMemories">
+        Smriti Gallery (Memories)
+      </button>
+      <button class="promi-tab-btn" id="tab-btn-reply" data-tab="reply" data-i18n="tabReply">
+        Promi's Reply &amp; Wishes
+      </button>
+      <button class="promi-tab-btn" id="tab-btn-rakhi" data-tab="rakhi" data-i18n="tabRakhi">
+        Promi's Raksha Sutra
+      </button>
+      <button class="promi-tab-btn" id="tab-btn-vows" data-tab="vows" data-i18n="tabVows">
+        Sacred Promises &amp; Shagun
+      </button>
+    </div>
+
+    <!-- Tab 1: Personal Letter from Ranti -->
+    <div class="promi-tab-content active" id="tab-content-letter">
+      <div class="glass-panel promi-card">
+        <div class="card-motif-header">
+          <span class="motif-symbol">ॐ</span>
+          <span class="motif-title" data-i18n="cardMotifTitle">शुभ रक्षा बन्धनम्</span>
+          <span class="motif-symbol">卐</span>
+        </div>
+
+        <div class="letter-meta-row">
+          <span class="meta-tag" data-i18n="fromRantiToPromi">From Ranti to Promi</span>
+          <span class="meta-date" data-i18n="promiShravanaDate">Shravana Purnima 2026</span>
+        </div>
+
+        <div class="personal-letter-body" id="promi-letter-text" data-i18n="promiLetterContent">
+Dear Promi,
+
+On this sacred occasion of Raksha Bandhan, I want to celebrate the priceless gift of having you in my life. Looking through all our shared memories, silly disagreements, late-night laughter, and silent understandings, our sibling bond has always been my greatest strength.
+
+No matter where life takes us or how fast time flies, my promise to you remains unwavering:
+- I will always be your steadfast supporter and protective shield.
+- I will celebrate your greatest victories and stand by you in your hardest days.
+- Our childhood memories and mutual trust will forever remain sacred and safe with me.
+
+May this auspicious Shravana Purnima shower you with good health, immense peace, boundless joy, and success in everything you pursue.
+        </div>
+
+        <div class="letter-signoff-block">
+          <span class="signoff-note" data-i18n="promiSignoffNote">With all my love, prayers &amp; lifelong protection,</span>
+          <h3 class="signoff-name" data-i18n="senderRanti">Ranti</h3>
+        </div>
+
+        <!-- Dynamic Custom AI Composer for Ranti to Promi -->
+        <div class="promi-ai-bar">
+          <div class="promi-ai-label" data-i18n="promiAiComposerLabel">Personalize &amp; Compose with Ranti:</div>
+          
+          <div class="promi-composer-inputs">
+            <div class="input-col">
+              <label class="sub-label" for="promi-memory-input" data-i18n="promiMemoryLabel">Specific Memory, Nickname or Inside Joke (Optional)</label>
+              <input
+                type="text"
+                id="promi-memory-input"
+                class="input-field"
+                placeholder="e.g. late night chats, favorite food, childhood secrets, funny moments"
+                data-i18n-placeholder="promiMemoryPlaceholder"
+              />
+            </div>
+
+            <div class="input-col">
+              <label class="sub-label" for="promi-wish-input" data-i18n="promiWishLabel">Special Wish or Prayer (Optional)</label>
+              <input
+                type="text"
+                id="promi-wish-input"
+                class="input-field"
+                placeholder="e.g. endless happiness, peace of mind, health, career success"
+                data-i18n-placeholder="promiWishPlaceholder"
+              />
+            </div>
+          </div>
+
+          <div class="promi-ai-buttons">
+            <button type="button" class="btn-promi-ai" data-tone="Vedic Sanskrit Blessing & Eternal Protection" data-i18n="promiToneVedic">
+              Vedic Ashirwad
+            </button>
+            <button type="button" class="btn-promi-ai" data-tone="Childhood Mischief, Shared Secrets & Sibling Laughs" data-i18n="promiToneMemories">
+              Childhood Memories
+            </button>
+            <button type="button" class="btn-promi-ai" data-tone="Unbreakable Shield, Deep Emotional Support & Anchor" data-i18n="promiToneShield">
+              Protective Shield
+            </button>
+            <button type="button" class="btn-promi-ai active-cta" id="btn-generate-promi-custom" data-i18n="promiComposeCustomBtn">
+              Compose with Custom Details
+            </button>
+          </div>
+          <div class="promi-ai-status" id="promi-ai-status" style="display: none;"></div>
+        </div>
+
+        <div class="card-interactive-footer">
+          <button class="btn-primary" id="btn-shower-petals" data-i18n="btnShowerPetals">
+            Shower Flower Petals &amp; Blessings
+          </button>
+          <button class="btn-secondary" id="btn-save-promi-card" data-i18n="btnSaveKeepsake">
+            Preserve Keepsake (PNG)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: High-End Curated Memories Showcase (Smriti Mala) -->
+    <div class="promi-tab-content" id="tab-content-memories">
+      <div class="glass-panel promi-card">
+        <div class="card-motif-header">
+          <span class="motif-symbol">ॐ</span>
+          <span class="motif-title" data-i18n="galleryHeader">Smriti Mala • Cherished Memories</span>
+          <span class="motif-symbol">卐</span>
+        </div>
+
+        <!-- Featured Spotlight Viewer -->
+        <div class="spotlight-viewer">
+          <div class="spotlight-image-box">
+            <img src="/images/promi/promi-6.webp" alt="Featured Memory" id="spotlight-active-img" class="spotlight-img" />
+            <div class="spotlight-overlay">
+              <span class="spotlight-tag" id="spotlight-tag">FESTIVE RITUAL</span>
+              <h3 class="spotlight-title" id="spotlight-title">Pavitra Deepa &amp; Festive Blessings</h3>
+              <p class="spotlight-desc" id="spotlight-desc">Shining bright with grace, devotion, and sacred auspiciousness.</p>
+            </div>
+          </div>
+          
+          <div class="spotlight-controls">
+            <button class="spotlight-arrow" id="spotlight-prev" aria-label="Previous Memory">&larr;</button>
+            <div class="spotlight-dots" id="spotlight-dots">
+              {promiMemories.map((_, i) => (
+                <span class={`spotlight-dot ${i === 0 ? 'active' : ''}`} data-index={i}></span>
+              ))}
+            </div>
+            <button class="spotlight-arrow" id="spotlight-next" aria-label="Next Memory">&rarr;</button>
+          </div>
+        </div>
+
+        <!-- Editorial Memory Strip -->
+        <div class="memory-filmstrip">
+          {promiMemories.map((item, index) => (
+            <div class={`filmstrip-thumb ${index === 0 ? 'active' : ''}`} data-index={index} data-src={item.src} data-title={item.title} data-desc={item.subtitle} data-tag={item.tag}>
+              <img src={item.src} alt={item.title} loading="lazy" />
+              <div class="thumb-tint"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Promi's Interactive Reply & Return Wish -->
+    <div class="promi-tab-content" id="tab-content-reply">
+      <div class="glass-panel promi-card">
+        <div class="card-motif-header">
+          <span class="motif-symbol">ॐ</span>
+          <span class="motif-title" data-i18n="replyTabTitle">Promi's Return Blessing to Ranti</span>
+          <span class="motif-symbol">卐</span>
+        </div>
+
+        <p class="reply-intro" data-i18n="replyTabIntro">
+          Promi, add your personal reply, return blessings, or festive demands for Ranti below:
+        </p>
+
+        <div class="reply-form-group">
+          <label class="control-label" for="promi-reply-tone" data-i18n="replyStyleLabel">Select Promi's Wish Style</label>
+          <div class="promi-reply-ai-buttons">
+            <button type="button" class="btn-reply-preset" data-reply-type="sweet" data-i18n="replySweet">
+              Loving Sister Ashirwad
+            </button>
+            <button type="button" class="btn-reply-preset" data-reply-type="mischief" data-i18n="replyMischief">
+              Playful Treat &amp; Gift Demand
+            </button>
+            <button type="button" class="btn-reply-preset" data-reply-type="gratitude" data-i18n="replyGratitude">
+              Deep Gratitude &amp; Bond
+            </button>
+          </div>
+        </div>
+
+        <div class="reply-form-group">
+          <label class="control-label" for="promi-reply-message" data-i18n="replyMsgLabel">Promi's Message to Ranti</label>
+          <textarea
+            id="promi-reply-message"
+            class="textarea-field"
+            rows="5"
+            placeholder="Dear Ranti, thank you for always being there for me..."
+            data-i18n-placeholder="replyMsgPlaceholder"
+          ></textarea>
+          <div class="promi-ai-status" id="promi-reply-ai-status" style="display: none;"></div>
+        </div>
+
+        <div class="reply-form-group">
+          <label class="control-label" for="promi-return-shagun" data-i18n="replyShagunLabel">Promi's Sibling Demand / Gift Choice</label>
+          <select id="promi-return-shagun" class="select-field">
+            <option value="Unlimited sweets, snacks, and favorite festive treats" data-i18n="replyShagun1">Unlimited Sweets &amp; Favorite Festive Treats</option>
+            <option value="A dedicated day out together with family celebration" data-i18n="replyShagun2">A Dedicated Day Out &amp; Family Celebration</option>
+            <option value="Special Raksha Bandhan gift of my choice on demand" data-i18n="replyShagun3">Special Rakhi Gift of My Choice</option>
+            <option value="Lifelong promise to listen to all my stories &amp; secrets" data-i18n="replyShagun4">Lifelong Promise to Listen to All My Stories</option>
+          </select>
+        </div>
+
+        <div class="card-interactive-footer">
+          <button class="btn-primary" id="btn-save-promi-reply-png" data-i18n="btnSaveReplyPng">
+            Save Promi's Reply Card (PNG)
+          </button>
+          <button class="btn-secondary" id="btn-celebrate-reply" data-i18n="btnCelebrateReply">
+            Offer Blessings to Ranti
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 4: Promi's Dedicated Handcrafted Raksha Sutra -->
+    <div class="promi-tab-content" id="tab-content-rakhi">
+      <div class="glass-panel promi-card rakhi-center-card">
+        <div class="rakhi-showcase-box">
+          <canvas id="promi-rakhi-canvas" width="420" height="420"></canvas>
+        </div>
+        <div class="rakhi-details-box">
+          <h3 data-i18n="promiRakhiHeading">Consecrated Raksha Sutra for Promi</h3>
+          <p class="rakhi-desc" data-i18n="promiRakhiDesc">
+            Woven with pure Kumkum &amp; Suvarna silk strands, centered with the sacred Om medallion and inscribed with your name.
+          </p>
+          <div class="rakhi-actions">
+            <button class="btn-primary" id="download-promi-rakhi-btn" data-i18n="btnDownloadPromiRakhi">
+              Download Raksha Sutra (PNG)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 5: Sacred Vows & Special Shagun Chest -->
+    <div class="promi-tab-content" id="tab-content-vows">
+      <div class="glass-panel promi-card">
+        <h3 class="vows-heading" data-i18n="promiVowsHeading">Ranti's Sacred Commitments to Promi</h3>
+        <p class="vows-sub" data-i18n="promiVowsSub">Eternal vows formalized under the sacred Shravana Purnima.</p>
+
+        <div class="vows-list">
+          <div class="vow-item">
+            <div class="vow-badge">I</div>
+            <div>
+              <h4 data-i18n="vow1Title">The Unbreakable Shield</h4>
+              <p data-i18n="vow1Desc">Unconditional presence and protection whenever you need advice, support, or someone to stand in your corner.</p>
+            </div>
+          </div>
+          <div class="vow-item">
+            <div class="vow-badge">II</div>
+            <div>
+              <h4 data-i18n="vow2Title">The Secret Vault</h4>
+              <p data-i18n="vow2Desc">All shared childhood mischief, confidential talks, and secret wishes are sealed forever with absolute trust.</p>
+            </div>
+          </div>
+          <div class="vow-item">
+            <div class="vow-badge">III</div>
+            <div>
+              <h4 data-i18n="vow3Title">Unconditional Food &amp; Treat Pass</h4>
+              <p data-i18n="vow3Desc">Guaranteed sponsorship of your favorite treats, sweets, and celebratory dinners on demand.</p>
+            </div>
+          </div>
+          <div class="vow-item">
+            <div class="vow-badge">IV</div>
+            <div>
+              <h4 data-i18n="vow4Title">Eternal Well-Wishing (Ashirwad)</h4>
+              <p data-i18n="vow4Desc">Daily prayers for your happiness, peace of mind, self-fulfillment, and lifelong prosperity.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="shagun-box-card">
+          <div class="shagun-icon-gold">ॐ</div>
+          <div class="shagun-details">
+            <span class="shagun-label" data-i18n="shagunLabelCard">OFFICIAL SIBLING SHAGUN DEED</span>
+            <p class="shagun-val" data-i18n="shagunValCard">Akhand Sneha, Eternal Protection &amp; Boundless Blessings</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation Back to Main Site -->
+    <div class="promi-bottom-nav">
+      <a href="/" class="btn-secondary" data-i18n="btnReturnHome">
+        Return to Main Raksha Bandhan Sanctuary
+      </a>
+    </div>
+
+  </div>
+
+  <canvas id="promi-celebration-canvas"></canvas>
+</Layout>
+
+<style>
+  .promi-container {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 3rem 1rem 5rem;
+  }
+
+  .promi-header-block {
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Promi Avatar Portrait with perfect top crop */
+  .promi-portrait-aura {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1.25rem;
+  }
+
+  .promi-avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top 15% center;
+    border: 3px solid var(--accent-gold);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
+    display: block;
+  }
+
+  .portrait-gold-ring {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 50%;
+    border: 1px dashed rgba(245, 158, 11, 0.4);
+    pointer-events: none;
+  }
+
+  .promi-main-title {
+    font-size: 2.6rem;
+    margin: 0.6rem 0 0.8rem;
+  }
+
+  .promi-sub-title {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .promi-sub-title strong {
+    color: var(--text-gold);
+  }
+
+  .promi-shloka-card {
+    margin: 1.5rem auto 2.2rem;
+  }
+
+  /* Stepper Tab Navigation */
+  .promi-tab-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    background: var(--surface-sunken);
+    padding: 0.35rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 2rem;
+  }
+
+  .promi-tab-btn {
+    padding: 0.5rem 1.15rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-full);
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .promi-tab-btn:hover {
+    color: var(--text-main);
+  }
+
+  .promi-tab-btn.active {
+    background: var(--surface-2);
+    border-color: var(--border-gold);
+    color: var(--text-gold);
+    font-weight: 600;
+  }
+
+  /* Tab Content */
+  .promi-tab-content {
+    display: none;
+    animation: fadeInTab 0.3s ease;
+  }
+
+  .promi-tab-content.active {
+    display: block;
+  }
+
+  @keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .promi-card {
+    padding: 2.5rem 2.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .card-motif-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 1.5rem;
+  }
+
+  .motif-symbol {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.3rem;
+    color: var(--accent-gold);
+    font-weight: bold;
+  }
+
+  .motif-title {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.15rem;
+    color: var(--text-gold);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .letter-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .meta-tag {
+    color: var(--text-gold);
+    font-weight: 600;
+  }
+
+  .meta-date {
+    color: var(--text-muted);
+  }
+
+  .personal-letter-body {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    white-space: pre-wrap;
+    margin-bottom: 2rem;
+  }
+
+  .letter-signoff-block {
+    text-align: right;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .signoff-note {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    display: block;
+  }
+
+  .signoff-name {
+    font-size: 1.4rem;
+    color: var(--text-gold);
+    margin-top: 0.3rem;
+  }
+
+  .promi-ai-bar {
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.75rem;
+    text-align: left;
+  }
+
+  .promi-ai-label {
+    font-size: 0.88rem;
+    color: var(--text-gold);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    text-align: center;
+  }
+
+  .promi-composer-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .input-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .sub-label {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .promi-ai-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .btn-promi-ai, .btn-reply-preset {
+    background: var(--surface-2);
+    border: 1px solid var(--border-gold);
+    color: var(--text-gold);
+    padding: 0.4rem 0.95rem;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .btn-promi-ai.active-cta {
+    background: var(--accent-gold);
+    color: #FFFFFF !important;
+    border-color: var(--accent-gold);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-promi-ai.active-cta:hover {
+    background: var(--accent-gold-light);
+    color: #FFFFFF !important;
+  }
+
+  .promi-ai-status {
+    font-size: 0.8rem;
+    color: var(--text-gold);
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  /* Spotlight Memory Viewer */
+  .spotlight-viewer {
+    position: relative;
+    max-width: 580px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .spotlight-image-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    max-height: 520px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--surface-2);
+    border: 1px solid var(--border-gold);
+    box-shadow: 0 8px 24px rgba(180, 83, 9, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .spotlight-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top 12% center;
+    transition: opacity 0.3s ease, transform 0.4s ease;
+  }
+
+  .spotlight-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.75rem 1.5rem 1.25rem;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.88) 70%, transparent 100%);
+    text-align: left;
+    border-top: 1px solid rgba(180, 83, 9, 0.15);
+  }
+
+  .spotlight-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent-kumkum);
+    margin-bottom: 0.25rem;
+  }
+
+  .spotlight-title {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    margin-bottom: 0.2rem;
+    font-weight: 700;
+  }
+
+  .spotlight-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+
+  .spotlight-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .spotlight-arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-gold);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .spotlight-arrow:hover {
+    background: var(--surface-3);
+    border-color: var(--border-gold);
+  }
+
+  .spotlight-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .spotlight-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--surface-3);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .spotlight-dot.active {
+    background: var(--accent-gold);
+    width: 22px;
+    border-radius: var(--radius-full);
+  }
+
+  /* Filmstrip */
+  .memory-filmstrip {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .filmstrip-thumb {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .filmstrip-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .filmstrip-thumb.active {
+    border-color: var(--accent-gold);
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+  }
+
+  /* Reply Styles */
+  .reply-intro {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .reply-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .promi-reply-ai-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .card-interactive-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Rakhi Tab */
+  .rakhi-center-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  #promi-rakhi-canvas {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    aspect-ratio: 1/1;
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+
+  .rakhi-details-box h3 {
+    font-size: 1.4rem;
+    color: var(--text-main);
+    margin-bottom: 0.4rem;
+  }
+
+  .rakhi-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+
+  /* Vows Tab */
+  .vows-heading {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 0.3rem;
+  }
+
+  .vows-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.75rem;
+  }
+
+  .vows-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .vow-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-subtle);
+    padding: 1.1rem 1.2rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .vow-badge {
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-xs);
+    background: var(--accent-gold-subtle);
+    border: 1px solid var(--border-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .vow-item h4 {
+    font-size: 0.92rem;
+    color: var(--text-main);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .vow-item p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .shagun-box-card {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-sm);
+    padding: 1.2rem 1.5rem;
+  }
+
+  .shagun-icon-gold {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.8rem;
+    color: var(--accent-gold);
+    font-weight: bold;
+  }
+
+  .shagun-label {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-gold);
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+
+  .shagun-val {
+    font-size: 0.98rem;
+    color: var(--text-main);
+    font-weight: 600;
+    margin-top: 0.2rem;
+  }
+
+  .promi-container {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 3rem 1rem 5rem;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .promi-bottom-nav {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  #promi-celebration-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  @media (max-width: 768px) {
+    .promi-tab-nav {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      justify-content: flex-start;
+      border-radius: var(--radius-md);
+      padding: 0.4rem 0.5rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .promi-tab-nav::-webkit-scrollbar {
+      display: none;
+    }
+    .promi-tab-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.82rem;
+    }
+    .vows-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .promi-composer-inputs {
+      grid-template-columns: 1fr;
+    }
+    .spotlight-image-box {
+      height: 340px;
+    }
+    .promi-ai-buttons {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .promi-container {
+      padding: 2rem 0.75rem 4rem;
+    }
+    .promi-main-title {
+      font-size: 2.1rem;
+    }
+    .promi-card {
+      padding: 1.75rem 1.2rem;
+    }
+    .card-interactive-footer button,
+    .promi-bottom-nav a {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import { soundEngine } from '../utils/audio';
+
+  // Tab switching
+  const tabs = document.querySelectorAll('.promi-tab-btn');
+  const contents = document.querySelectorAll('.promi-tab-content');
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      btn.classList.add('active');
+      const tabKey = btn.getAttribute('data-tab');
+      const targetContent = document.getElementById(`tab-content-${tabKey}`);
+      if (targetContent) targetContent.classList.add('active');
+
+      soundEngine.playShimmer();
+      if (tabKey === 'rakhi') {
+        drawPromiRakhi();
+      }
+    });
+  });
+
+  // Spotlight Gallery Data & Navigation
+  const memoriesData = {
+    en: [
+      { 
+        src: '/images/promi/promi-6.webp', 
+        title: 'Pavitra Deepa & Festive Blessings', 
+        subtitle: 'Shining bright with grace, devotion, and sacred auspiciousness.',
+        tag: 'FESTIVE RITUAL'
+      },
+      { 
+        src: '/images/promi/promi-5.webp', 
+        title: 'Joyful Sister & Nature Smiles', 
+        subtitle: 'Cherished moments of pure laughter and sisterly warmth.',
+        tag: 'CHERISHED SMILE'
+      },
+      { 
+        src: '/images/promi/promi-1.webp', 
+        title: 'Grace & Traditional Radiance', 
+        subtitle: 'The pride of our family and the heart of every festival.',
+        tag: 'SACRED BOND'
+      },
+      { 
+        src: '/images/promi/promi-4.webp', 
+        title: 'Childhood Wanderer & Companion', 
+        subtitle: 'Through all adventures, trips, and shared mischief.',
+        tag: 'PARTNER IN CRIME'
+      },
+      { 
+        src: '/images/promi/promi-2.webp', 
+        title: 'Eternal Sisterly Affection', 
+        subtitle: 'A lifelong bond protected by prayers and unconditional love.',
+        tag: 'RAKSHA KAVACH'
+      },
+    ],
+    bn: [
+      { 
+        src: '/images/promi/promi-6.webp', 
+        title: 'পবিত্র প্রদীপ ও উৎসবের আশির্বাদ', 
+        subtitle: 'ভক্তি, স্নেহ ও পবিত্র শুভলগ্নে আলোকিত মধুর মুহূর্ত।',
+        tag: 'পূজার আচার'
+      },
+      { 
+        src: '/images/promi/promi-5.webp', 
+        title: 'প্রকৃতির মাঝে বোনের মিষ্টি হাসি', 
+        subtitle: 'নির্মল আনন্দ আর ভাই-বোনের মধুর স্মৃতির প্রতিচ্ছবি।',
+        tag: 'মধুর হাসি'
+      },
+      { 
+        src: '/images/promi/promi-1.webp', 
+        title: 'স্নেহের বোন ও উৎসবের আনন্দ', 
+        subtitle: 'আমাদের পরিবারের গর্ব এবং প্রতিটি উৎসবের প্রাণ।',
+        tag: 'পবিত্র বন্ধন'
+      },
+      { 
+        src: '/images/promi/promi-4.webp', 
+        title: 'শৈশবের খেলার সঙ্গী ও খুনসুটি', 
+        subtitle: 'সমস্ত ভ্রমণ, আড্ডা আর শৈশবের অমলিন স্মৃতি।',
+        tag: 'খুনসুটির সঙ্গী'
+      },
+      { 
+        src: '/images/promi/promi-2.webp', 
+        title: 'ভাই-বোনের শাশ্বত স্নেহ ও ভরসা', 
+        subtitle: 'চিরন্তন ভালোবাসায় সুরক্ষিত এক অটুট আত্মিক বন্ধন।',
+        tag: 'রক্ষাকবচ'
+      },
+    ]
+  };
+
+  let currentMemIdx = 0;
+  const spotImg = document.getElementById('spotlight-active-img') as HTMLImageElement;
+  const spotTag = document.getElementById('spotlight-tag');
+  const spotTitle = document.getElementById('spotlight-title');
+  const spotDesc = document.getElementById('spotlight-desc');
+  const dots = document.querySelectorAll('.spotlight-dot');
+  const filmThumbs = document.querySelectorAll('.filmstrip-thumb');
+
+  function updateSpotlight(index: number) {
+    const lang = (localStorage.getItem('rb_lang') || 'en') as 'en' | 'bn';
+    const list = memoriesData[lang] || memoriesData.en;
+
+    if (index < 0) index = list.length - 1;
+    if (index >= list.length) index = 0;
+    currentMemIdx = index;
+
+    const mem = list[currentMemIdx];
+    if (spotImg && spotTag && spotTitle && spotDesc) {
+      spotImg.style.opacity = '0.4';
+      setTimeout(() => {
+        spotImg.src = mem.src;
+        spotTag.textContent = mem.tag;
+        spotTitle.textContent = mem.title;
+        spotDesc.textContent = mem.subtitle;
+        spotImg.style.opacity = '1';
+      }, 150);
+    }
+
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentMemIdx));
+    filmThumbs.forEach((th, i) => th.classList.toggle('active', i === currentMemIdx));
+  }
+
+  window.addEventListener('languageChange', () => {
+    updateSpotlight(currentMemIdx);
+  });
+
+  document.getElementById('spotlight-prev')?.addEventListener('click', () => {
+    updateSpotlight(currentMemIdx - 1);
+    soundEngine.playShimmer();
+  });
+
+  document.getElementById('spotlight-next')?.addEventListener('click', () => {
+    updateSpotlight(currentMemIdx + 1);
+    soundEngine.playCelebrationChime();
+    triggerPromiPetals();
+  });
+
+  filmThumbs.forEach(th => {
+    th.addEventListener('click', () => {
+      const idx = parseInt(th.getAttribute('data-index') || '0', 10);
+      updateSpotlight(idx);
+      soundEngine.playCelebrationChime();
+    });
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.getAttribute('data-index') || '0', 10);
+      updateSpotlight(idx);
+    });
+  });
+
+  // Canvas Petal System
+  const canvas = document.getElementById('promi-celebration-canvas') as HTMLCanvasElement;
+  let ctx: CanvasRenderingContext2D | null = null;
+  if (canvas) ctx = canvas.getContext('2d');
+
+  interface PetalParticle {
+    x: number;
+    y: number;
+    size: number;
+    color: string;
+    vx: number;
+    vy: number;
+    rotation: number;
+    vr: number;
+    alpha: number;
+  }
+  let petals: PetalParticle[] = [];
+
+  function triggerPromiPetals() {
+    if (!canvas || !ctx) return;
+    canvas.width = document.documentElement.clientWidth || window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const colors = ['#F59E0B', '#FBBF24', '#DC2626', '#FFFFFF', '#EA580C'];
+    for (let i = 0; i < 75; i++) {
+      petals.push({
+        x: canvas.width / 2,
+        y: canvas.height / 3,
+        size: Math.random() * 7 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        vx: (Math.random() - 0.5) * 12,
+        vy: (Math.random() - 0.7) * 12,
+        rotation: Math.random() * Math.PI * 2,
+        vr: (Math.random() - 0.5) * 0.15,
+        alpha: 1.0,
+      });
+    }
+    render();
+  }
+
+  function render() {
+    if (!ctx || !canvas) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = petals.length - 1; i >= 0; i--) {
+      const p = petals[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.2;
+      p.rotation += p.vr;
+      p.alpha -= 0.015;
+
+      if (p.alpha <= 0) {
+        petals.splice(i, 1);
+        continue;
+      }
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation);
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, p.size, p.size * 0.6, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    if (petals.length > 0) requestAnimationFrame(render);
+  }
+
+  // Shower Petals Button
+  const showerBtn = document.getElementById('btn-shower-petals');
+  showerBtn?.addEventListener('click', () => {
+    soundEngine.playCelebrationChime();
+    triggerPromiPetals();
+    setTimeout(triggerPromiPetals, 350);
+  });
+
+  // Dedicated Rakhi Canvas Drawer
+  function drawPromiRakhi() {
+    const rCanvas = document.getElementById('promi-rakhi-canvas') as HTMLCanvasElement;
+    if (!rCanvas) return;
+    const rCtx = rCanvas.getContext('2d');
+    if (!rCtx) return;
+
+    const w = rCanvas.width;
+    const h = rCanvas.height;
+    const cx = w / 2;
+    const cy = h / 2;
+
+    rCtx.clearRect(0, 0, w, h);
+
+    // 1. Thread
+    rCtx.save();
+    rCtx.lineWidth = 6;
+    rCtx.lineCap = 'round';
+    rCtx.strokeStyle = '#DC2626';
+    rCtx.beginPath();
+    rCtx.moveTo(20, cy - 3);
+    rCtx.lineTo(w - 20, cy - 3);
+    rCtx.stroke();
+
+    rCtx.strokeStyle = '#F59E0B';
+    rCtx.beginPath();
+    rCtx.moveTo(20, cy + 3);
+    rCtx.lineTo(w - 20, cy + 3);
+    rCtx.stroke();
+    rCtx.restore();
+
+    // 2. Pearls
+    const offsets = [-130, -100, -70, 70, 100, 130];
+    offsets.forEach((ox, idx) => {
+      rCtx.save();
+      rCtx.beginPath();
+      const r = idx % 2 === 0 ? 10 : 7;
+      rCtx.arc(cx + ox, cy, r, 0, Math.PI * 2);
+      const grad = rCtx.createRadialGradient(cx + ox - 2, cy - 2, 1, cx + ox, cy, r);
+      grad.addColorStop(0, '#FFFFFF');
+      grad.addColorStop(0.7, '#E2E8F0');
+      grad.addColorStop(1, '#94A3B8');
+      rCtx.fillStyle = grad;
+      rCtx.shadowColor = 'rgba(0,0,0,0.4)';
+      rCtx.shadowBlur = 4;
+      rCtx.fill();
+      rCtx.restore();
+    });
+
+    // 3. Rosette Base
+    rCtx.save();
+    const petalsCount = 16;
+    for (let i = 0; i < petalsCount; i++) {
+      const angle = (i * Math.PI * 2) / petalsCount;
+      const px = cx + Math.cos(angle) * 48;
+      const py = cy + Math.sin(angle) * 48;
+      rCtx.beginPath();
+      rCtx.arc(px, py, 10, 0, Math.PI * 2);
+      rCtx.fillStyle = i % 2 === 0 ? '#F59E0B' : '#DC2626';
+      rCtx.fill();
+    }
+
+    // Gold Outer Core
+    rCtx.beginPath();
+    rCtx.arc(cx, cy, 48, 0, Math.PI * 2);
+    const cGrad = rCtx.createRadialGradient(cx, cy, 5, cx, cy, 48);
+    cGrad.addColorStop(0, '#FDE68A');
+    cGrad.addColorStop(0.6, '#F59E0B');
+    cGrad.addColorStop(1, '#B45309');
+    rCtx.fillStyle = cGrad;
+    rCtx.shadowColor = '#F59E0B';
+    rCtx.shadowBlur = 12;
+    rCtx.fill();
+
+    // Crimson Inner Core
+    rCtx.beginPath();
+    rCtx.arc(cx, cy, 34, 0, Math.PI * 2);
+    rCtx.fillStyle = '#7F1D1D';
+    rCtx.fill();
+
+    // Om Center
+    rCtx.font = 'bold 30px "Noto Serif Devanagari", serif';
+    rCtx.fillStyle = '#FEF3C7';
+    rCtx.textAlign = 'center';
+    rCtx.textBaseline = 'middle';
+    rCtx.fillText('ॐ', cx, cy + 2);
+
+    // Inscription for Promi
+    rCtx.font = 'bold 12px "Outfit", sans-serif';
+    rCtx.fillStyle = '#FDE68A';
+    rCtx.fillText('PROMI', cx, cy + 62);
+    rCtx.restore();
+  }
+
+  // Draw on start
+  drawPromiRakhi();
+
+  // Download Rakhi button
+  document.getElementById('download-promi-rakhi-btn')?.addEventListener('click', () => {
+    const rCanvas = document.getElementById('promi-rakhi-canvas') as HTMLCanvasElement;
+    if (!rCanvas) return;
+    const link = document.createElement('a');
+    link.download = `raksha-sutra-promi-${Date.now()}.png`;
+    link.href = rCanvas.toDataURL('image/png');
+    link.click();
+    soundEngine.playCelebrationChime();
+  });
+
+  // Save Card PNG
+  document.getElementById('btn-save-promi-card')?.addEventListener('click', () => {
+    const offCanvas = document.createElement('canvas');
+    offCanvas.width = 800;
+    offCanvas.height = 700;
+    const oCtx = offCanvas.getContext('2d');
+    if (!oCtx) return;
+
+    oCtx.fillStyle = '#0F121C';
+    oCtx.fillRect(0, 0, 800, 700);
+
+    oCtx.strokeStyle = '#F59E0B';
+    oCtx.lineWidth = 4;
+    oCtx.strokeRect(20, 20, 760, 660);
+
+    oCtx.fillStyle = '#FDE68A';
+    oCtx.font = 'bold 24px serif';
+    oCtx.textAlign = 'center';
+    oCtx.fillText('RAKSHA BANDHAN SMRITI PATRA', 400, 80);
+
+    oCtx.textAlign = 'left';
+    oCtx.fillStyle = '#FFFFFF';
+    oCtx.font = '20px serif';
+    oCtx.fillText('To: Promi', 60, 150);
+    oCtx.fillText('From: Ranti', 60, 190);
+
+    oCtx.font = '15px sans-serif';
+    oCtx.fillStyle = '#E2E8F0';
+    oCtx.fillText('Dear Promi, on this sacred Raksha Bandhan, I reaffirm my lifelong promise', 60, 250);
+    oCtx.fillText('to protect, support, and cherish our sacred sibling bond with eternal love.', 60, 280);
+
+    oCtx.fillStyle = '#F59E0B';
+    oCtx.font = '16px serif';
+    oCtx.fillText('Shagun: Akhand Sneha, Eternal Protection & Prosperity', 60, 360);
+
+    const a = document.createElement('a');
+    a.download = `promi-rakhi-memory-${Date.now()}.png`;
+    a.href = offCanvas.toDataURL('image/png');
+    a.click();
+    soundEngine.playCelebrationChime();
+  });
+
+  // Promi Dynamic Blessing Re-composer (Ranti to Promi)
+  const aiStatusEl = document.getElementById('promi-ai-status');
+  const letterBodyEl = document.getElementById('promi-letter-text');
+  const aiButtons = document.querySelectorAll('.btn-promi-ai');
+  const memoryInput = document.getElementById('promi-memory-input') as HTMLInputElement;
+  const wishInput = document.getElementById('promi-wish-input') as HTMLInputElement;
+
+  async function composePromiLetter(tone: string) {
+    const memoryText = memoryInput?.value.trim();
+    const wishText = wishInput?.value.trim();
+
+    if (aiStatusEl) {
+      aiStatusEl.style.display = 'block';
+      aiStatusEl.textContent = 'Composing a personalized blessing with Ranti...';
+    }
+
+    let promptDetails = `Write an authentic, touching personal Raksha Bandhan message from brother Ranti to his sister Promi highlighting ${tone}.`;
+    if (memoryText) {
+      promptDetails += ` Incorporate this special shared memory / inside note: "${memoryText}".`;
+    }
+    if (wishText) {
+      promptDetails += ` Include this heartfelt prayer or wish: "${wishText}".`;
+    }
+    promptDetails += ' Keep it dignified, warm, heartfelt, and zero emojis.';
+
+    try {
+      const res = await fetch('/api/generate-blessing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          toName: 'Promi',
+          fromName: 'Ranti',
+          relation: 'Sister to Brother',
+          tone: tone,
+          customPrompt: promptDetails,
+        }),
+      });
+
+      const data = await res.json() as { message?: string; error?: string };
+      if (data && data.message && letterBodyEl) {
+        letterBodyEl.textContent = data.message;
+        if (aiStatusEl) {
+          aiStatusEl.textContent = 'Personalized blessing composed with your custom details.';
+          setTimeout(() => { aiStatusEl.style.display = 'none'; }, 3000);
+        }
+        soundEngine.playCelebrationChime();
+        triggerPromiPetals();
+        return;
+      }
+    } catch {
+      // Graceful local generation
+    }
+
+    // Client-side fallback
+    const lang = localStorage.getItem('rb_lang') || 'en';
+    let fallback = '';
+    if (lang === 'bn') {
+      if (tone.includes('Vedic') || tone.includes('Ashirwad')) {
+        fallback = `স্নেহের প্রমি,\n\n"येन बद्धो बली राजा दानवेन्द्रो महाबलः। तेन त्वां प्रतिबद्धनामि রক্ষে মা চল মা চল॥"\n\nশ্রাবণ পূর্ণিমার এই পরম পবিত্র লগ্নে ঈশ্বরের কাছে তোমার সার্বিক মঙ্গল, সুস্বাস্থ্য ও অফুরন্ত শান্তির প্রার্থনা করি।${memoryText ? ` আমাদের সেই বিশেষ স্মৃতি: ${memoryText}। ` : ''}জীবনের প্রতিটি পদক্ষেপে ভাই হিসেবে আমি সর্বদাই তোমার পাশে থাকব।\n\nচিরন্তন স্নেহের সাথে,\nরন্তি`;
+      } else if (tone.includes('Mischief') || tone.includes('Memories')) {
+        fallback = `স্নেহের প্রমি,\n\nশৈশবের খুনসুটি, রাতের আড্ডা আর না-বলা সমস্ত হাসির স্মৃতিই আমার জীবনের সেরা মুহূর্ত।${memoryText ? ` বিশেষ করে আমাদের ${memoryText} এর কথা মনে পড়ে। ` : ''}তোমার মতো মিষ্টি বোন পাওয়া সত্যিই পরম ভাগ্যের।${wishText ? ` তোমার জন্য কামনা করি: ${wishText}।` : ''}\n\nভালোবাসা ও স্নেহের সাথে,\nরন্তি`;
+      } else {
+        fallback = `স্নেহের প্রমি,\n\nরাখীবন্ধনের এই শুভ দিনে তোমার প্রতি আমার এই অটুট প্রতিজ্ঞা রইল: জীবনের সমস্ত ঋতুতে আমি তোমার অবিচল রক্ষাকবচ ও বিশ্বস্ত ভরসা হয়ে পাশে থাকব।${wishText ? ` তোমার জন্য বিশেষ প্রার্থনা: ${wishText}।` : ''}\n\nচিরন্তন আশীর্বাদ ও ভালোবাসার সাথে,\nরন্তি`;
+      }
+    } else {
+      if (tone.includes('Vedic') || tone.includes('Ashirwad')) {
+        fallback = `Dearest Promi,\n\n"येन बद्धो बली राजा दानवेन्द्रो महाबलः। तेन त्वां प्रतिबद्धनामि रक्षे मा चल मा चल॥"\n\nOn this sacred Shravana Purnima, I pray for your lifelong health, boundless joy, and divine prosperity. May our sacred sibling bond always illuminate your path.${memoryText ? ` Cherishing our memories: ${memoryText}.` : ''}\n\nWith eternal love & protection,\nRanti`;
+      } else {
+        fallback = `Dearest Promi,\n\nFrom our childhood giggles to our silent understandings, having you as my sister is the greatest blessing. I promise to always stand by you as your steadfast protector and greatest supporter.${wishText ? ` Praying for ${wishText}.` : ''}\n\nWith all my love,\nRanti`;
+      }
+    }
+
+    if (letterBodyEl) letterBodyEl.textContent = fallback;
+    if (aiStatusEl) {
+      aiStatusEl.textContent = 'Personalized blessing composed with your custom details.';
+      setTimeout(() => { aiStatusEl.style.display = 'none'; }, 3000);
+    }
+    soundEngine.playCelebrationChime();
+    triggerPromiPetals();
+  }
+
+  aiButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tone = btn.getAttribute('data-tone') || 'Heartfelt Sister-Brother Blessing & Eternal Support';
+      composePromiLetter(tone);
+    });
+  });
+
+  // Promi's Reply Helpers (Promi to Ranti)
+  const replyTextArea = document.getElementById('promi-reply-message') as HTMLTextAreaElement;
+  const replyAiStatus = document.getElementById('promi-reply-ai-status');
+  const replyPresetBtns = document.querySelectorAll('.btn-reply-preset');
+
+  replyPresetBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const replyType = btn.getAttribute('data-reply-type') || 'sweet';
+      let promptDescription = 'A heartfelt sisterly reply and blessing to Ranti, expressing deep gratitude and love for Raksha Bandhan.';
+      if (replyType === 'mischief') {
+        promptDescription = 'A playful, sweet sibling reply to Ranti demanding festive sweets, favorite treats, and teasing him while sending warm Rakhi blessings.';
+      } else if (replyType === 'gratitude') {
+        promptDescription = 'A deep, reverent sisterly message to Ranti thanking him for being an unwavering shield, protector, and lifelong companion.';
+      }
+
+      if (replyAiStatus) {
+        replyAiStatus.style.display = 'block';
+        replyAiStatus.textContent = 'Composing Promi\'s return wish...';
+      }
+
+      try {
+        const res = await fetch('/api/generate-blessing', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            toName: 'Ranti',
+            fromName: 'Promi',
+            relation: 'Sister to Brother',
+            tone: promptDescription,
+            customPrompt: `Write a sweet, authentic Raksha Bandhan reply from sister Promi to her brother Ranti. ${promptDescription} Keep it natural, warm, and zero emojis.`
+          })
+        });
+
+        const data = await res.json() as { message?: string; error?: string };
+        if (res.ok && data.message && replyTextArea) {
+          replyTextArea.value = data.message;
+          if (replyAiStatus) {
+            replyAiStatus.textContent = 'Promi\'s reply composed.';
+            setTimeout(() => { replyAiStatus.style.display = 'none'; }, 2500);
+          }
+          soundEngine.playCelebrationChime();
+        }
+      } catch (err) {
+        if (replyTextArea) {
+          replyTextArea.value = `Dear Ranti,\n\nThank you for always standing by me as my shield and best friend. Wishing you endless happiness, good health, and success on this Raksha Bandhan!\n\nWith love,\nPromi`;
+        }
+        if (replyAiStatus) {
+          replyAiStatus.textContent = 'Populated with sweet reply.';
+          setTimeout(() => { replyAiStatus.style.display = 'none'; }, 2500);
+        }
+      }
+    });
+  });
+
+  // Save Promi's Reply Card PNG
+  document.getElementById('btn-save-promi-reply-png')?.addEventListener('click', () => {
+    const msg = replyTextArea?.value || 'Dear Ranti, happy Raksha Bandhan! With all my love, Promi.';
+    const shagun = (document.getElementById('promi-return-shagun') as HTMLSelectElement)?.value || 'Unlimited sweets & festive treats';
+
+    const offCanvas = document.createElement('canvas');
+    offCanvas.width = 800;
+    offCanvas.height = 700;
+    const oCtx = offCanvas.getContext('2d');
+    if (!oCtx) return;
+
+    oCtx.fillStyle = '#0F121C';
+    oCtx.fillRect(0, 0, 800, 700);
+
+    oCtx.strokeStyle = '#F59E0B';
+    oCtx.lineWidth = 4;
+    oCtx.strokeRect(20, 20, 760, 660);
+
+    oCtx.fillStyle = '#FDE68A';
+    oCtx.font = 'bold 24px serif';
+    oCtx.textAlign = 'center';
+    oCtx.fillText("PROMI'S SMRITI & ASHIRWAD TO RANTI", 400, 80);
+
+    oCtx.textAlign = 'left';
+    oCtx.fillStyle = '#FFFFFF';
+    oCtx.font = '20px serif';
+    oCtx.fillText('From: Promi', 60, 150);
+    oCtx.fillText('To: Ranti', 60, 190);
+
+    oCtx.font = '15px sans-serif';
+    oCtx.fillStyle = '#E2E8F0';
+    
+    // Multi-line wrap
+    const words = msg.split(' ');
+    let line = '';
+    let y = 250;
+    for (let n = 0; n < words.length; n++) {
+      const testLine = line + words[n] + ' ';
+      const metrics = oCtx.measureText(testLine);
+      if (metrics.width > 680 && n > 0) {
+        oCtx.fillText(line, 60, y);
+        line = words[n] + ' ';
+        y += 28;
+      } else {
+        line = testLine;
+      }
+    }
+    oCtx.fillText(line, 60, y);
+
+    oCtx.fillStyle = '#F59E0B';
+    oCtx.font = '16px serif';
+    oCtx.fillText(`Promi's Festive Claim: ${shagun}`, 60, y + 60);
+
+    const a = document.createElement('a');
+    a.download = `promi-reply-to-ranti-${Date.now()}.png`;
+    a.href = offCanvas.toDataURL('image/png');
+    a.click();
+    soundEngine.playCelebrationChime();
+  });
+
+  // Celebrate Reply Button
+  document.getElementById('btn-celebrate-reply')?.addEventListener('click', () => {
+    soundEngine.playCelebrationChime();
+    triggerPromiPetals();
+    setTimeout(triggerPromiPetals, 350);
+  });
+
+  // Auto trigger celebratory petals on initial page visit
+  setTimeout(() => {
+    soundEngine.playTempleBell(1.0);
+    triggerPromiPetals();
+  }, 600);
+</script>

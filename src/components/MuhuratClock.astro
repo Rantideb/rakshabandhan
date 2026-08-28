@@ -1,0 +1,236 @@
+---
+// MuhuratClock.astro - Clean Auspicious Panchang Timings & Countdown
+---
+
+<section class="glass-panel muhurat-container" id="muhurat-section">
+  <div class="muhurat-header">
+    <div class="section-badge">
+      <span class="badge-symbol">卐</span>
+      <span data-i18n="muhuratBadge">Shubha Muhurat &amp; Panchang</span>
+    </div>
+    <h2 class="section-title" data-i18n="muhuratTitle">Shravana Purnima Countdown</h2>
+    <p class="section-desc">
+      <span data-i18n="muhuratDesc">Auspicious timings calculated for your timezone</span> (<span id="user-tz">Detecting...</span>)
+    </p>
+  </div>
+
+  <div class="countdown-grid">
+    <div class="countdown-card">
+      <span class="count-value" id="count-days">00</span>
+      <span class="count-label" data-i18n="days">Days</span>
+    </div>
+    <div class="countdown-card">
+      <span class="count-value" id="count-hours">00</span>
+      <span class="count-label" data-i18n="hours">Hours</span>
+    </div>
+    <div class="countdown-card">
+      <span class="count-value" id="count-mins">00</span>
+      <span class="count-label" data-i18n="minutes">Minutes</span>
+    </div>
+    <div class="countdown-card">
+      <span class="count-value" id="count-secs">00</span>
+      <span class="count-label" data-i18n="seconds">Seconds</span>
+    </div>
+  </div>
+
+  <div class="muhurat-details-grid">
+    <div class="detail-box">
+      <div class="detail-badge-icon">I</div>
+      <div class="detail-text-col">
+        <h4 data-i18n="aparahnaTitle">Aparahna Kaal (Most Auspicious)</h4>
+        <p class="detail-time" data-i18n="aparahnaTime">01:42 PM to 04:18 PM</p>
+        <span class="detail-note" data-i18n="aparahnaDesc">Ideal period for tying Raksha Sutra</span>
+      </div>
+    </div>
+    <div class="detail-box">
+      <div class="detail-badge-icon">II</div>
+      <div class="detail-text-col">
+        <h4 data-i18n="pradoshaTitle">Pradosha Kaal Muhurat</h4>
+        <p class="detail-time" data-i18n="pradoshaTime">06:50 PM to 09:05 PM</p>
+        <span class="detail-note" data-i18n="pradoshaDesc">Auspicious evening twilight period</span>
+      </div>
+    </div>
+    <div class="detail-box">
+      <div class="detail-badge-icon">III</div>
+      <div class="detail-text-col">
+        <h4 data-i18n="purnimaTitle">Purnima Tithi &amp; Bhadra</h4>
+        <p class="detail-time" data-i18n="purnimaStatus">Bhadra Mukha Cleared</p>
+        <span class="detail-note" data-i18n="purnimaDesc">Pure and sacred Shravana Purnima</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .muhurat-container {
+    padding: 2.5rem 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .muhurat-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin: 0.4rem 0;
+  }
+
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+  }
+
+  .countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 580px;
+    margin: 0 auto 2.2rem;
+  }
+
+  .countdown-card {
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1rem 0.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .count-value {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--text-gold);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .count-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0.3rem;
+  }
+
+  .muhurat-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 1.5rem;
+  }
+
+  .detail-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    background: var(--surface-2);
+    padding: 1rem 1.15rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .detail-badge-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-xs);
+    background: var(--accent-gold-subtle);
+    border: 1px solid var(--border-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .detail-text-col h4 {
+    font-size: 0.88rem;
+    color: var(--text-main);
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+  }
+
+  .detail-time {
+    font-size: 0.95rem;
+    color: var(--text-gold);
+    font-weight: 600;
+  }
+
+  .detail-note {
+    display: block;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  @media (max-width: 600px) {
+    .muhurat-container {
+      padding: 1.75rem 1rem;
+    }
+    .countdown-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+  }
+</style>
+
+<script>
+  import { toBengaliNumerals } from '../utils/i18n';
+
+  const tzSpan = document.getElementById('user-tz');
+  if (tzSpan) {
+    try {
+      tzSpan.textContent = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local';
+    } catch {
+      tzSpan.textContent = 'Local';
+    }
+  }
+
+  const targetDate = new Date('2026-08-28T10:00:00+05:30').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    let diff = targetDate - now;
+
+    if (diff <= 0) {
+      diff = 0;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const isBn = localStorage.getItem('rb_lang') === 'bn';
+
+    const dStr = String(days).padStart(2, '0');
+    const hStr = String(hours).padStart(2, '0');
+    const mStr = String(mins).padStart(2, '0');
+    const sStr = String(secs).padStart(2, '0');
+
+    const dEl = document.getElementById('count-days');
+    const hEl = document.getElementById('count-hours');
+    const mEl = document.getElementById('count-mins');
+    const sEl = document.getElementById('count-secs');
+
+    if (dEl) dEl.textContent = isBn ? toBengaliNumerals(dStr) : dStr;
+    if (hEl) hEl.textContent = isBn ? toBengaliNumerals(hStr) : hStr;
+    if (mEl) mEl.textContent = isBn ? toBengaliNumerals(mStr) : mStr;
+    if (sEl) sEl.textContent = isBn ? toBengaliNumerals(sStr) : sStr;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  window.addEventListener('languageChange', () => {
+    updateCountdown();
+  });
+</script>

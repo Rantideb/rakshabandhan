@@ -1,0 +1,499 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Gupt Raksha Patra • Sacred Sibling Letter">
+  <div class="card-page-container">
+    <div class="glass-panel card-unlock-wrapper" id="unlock-card-wrapper">
+      
+      <!-- State 1: Locked / Password Prompt -->
+      <div class="capsule-locked-state" id="locked-state">
+        <div class="envelope-art float-slow">
+          <div class="golden-seal">ॐ</div>
+        </div>
+
+        <h1 class="font-festive unlock-title" data-i18n="capsuleBadge">
+          Gupt <span class="gold-text">Raksha Patra</span>
+        </h1>
+        <p class="unlock-desc" data-i18n="capsuleDesc">
+          A sanctified, private, end-to-end encrypted Raksha Bandhan letter has arrived for you.
+        </p>
+
+        <div class="decrypt-control-group" id="passphrase-container" style="display: none;">
+          <input
+            type="password"
+            id="decrypt-pass"
+            class="input-field"
+            placeholder="Enter the secret family passphrase..."
+            data-i18n-placeholder="passphrasePlaceholder"
+          />
+          <p class="error-msg" id="decrypt-error" style="display: none;">Incorrect passphrase. Please try again.</p>
+        </div>
+
+        <button class="btn-primary unlock-btn" id="unlock-btn" data-i18n="btnPreviewDecrypt">
+          Unseal &amp; Open Letter
+        </button>
+      </div>
+
+      <!-- State 2: Unfolded Festive Card Presentation -->
+      <div class="capsule-opened-state" id="opened-state" style="display: none;">
+        <!-- Canvas for Flower Petal Shower -->
+        <canvas id="card-confetti-canvas"></canvas>
+
+        <div class="card-letter-box">
+          <div class="card-top-motif">
+            <span class="motif-symbol">ॐ</span>
+            <span class="motif-center-text" data-i18n="cardMotifTitle">शुभ रक्षा बन्धनम्</span>
+            <span class="motif-symbol">卐</span>
+          </div>
+
+          <div class="letter-meta-header">
+            <div class="relation-badge" id="card-relation">Sister to Brother</div>
+            <div class="date-badge" id="card-date">Shravana Purnima</div>
+          </div>
+
+          <h2 class="card-greeting font-festive">
+            <span id="card-greeting-prefix">Dear</span> <span class="gold-text" id="card-to">Sibling</span>,
+          </h2>
+
+          <div class="card-message-body" id="card-message">
+            Loading sanctified message...
+          </div>
+
+          <!-- Sibling Shagun / Ashirwad Box -->
+          <div class="voucher-box" id="card-voucher-container">
+            <div class="voucher-symbol">ॐ</div>
+            <div class="voucher-content">
+              <span class="voucher-title" data-i18n="shagunLabelCard">SACRED SHAGUN &amp; ASHIRWAD</span>
+              <p class="voucher-text" id="card-voucher">Akhand Sneha &amp; Lifelong Protection</p>
+            </div>
+          </div>
+
+          <div class="card-signoff">
+            <span data-i18n="promiSignoffNote">With eternal affection, prayers &amp; protection,</span>
+            <h3 class="gold-text" id="card-from">Your Loving Sibling</h3>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <a href="/" class="btn-primary" data-i18n="btnReturnHome">
+            Create Your Own Sibling Letter
+          </a>
+          <button class="btn-secondary" id="save-card-img-btn" data-i18n="btnSaveKeepsake">
+            Preserve Memory (PNG)
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .card-page-container {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+  }
+
+  .card-unlock-wrapper {
+    width: 100%;
+    max-width: 620px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .envelope-art {
+    width: 72px;
+    height: 56px;
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+    margin: 0 auto 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-gold);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .golden-seal {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-gold);
+  }
+
+  .unlock-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .unlock-desc {
+    color: var(--text-secondary);
+    margin-bottom: 1.75rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .decrypt-control-group {
+    max-width: 360px;
+    margin: 0 auto 1.25rem;
+  }
+
+  .error-msg {
+    color: var(--accent-kumkum);
+    font-size: 0.82rem;
+    margin-top: 0.4rem;
+  }
+
+  .unlock-btn {
+    font-size: 0.92rem;
+    padding: 0.8rem 2rem;
+  }
+
+  /* Opened State */
+  #card-confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .card-letter-box {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 2rem 1.75rem;
+    text-align: left;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-top-motif {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .motif-symbol {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+    font-weight: bold;
+  }
+
+  .motif-center-text {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1rem;
+    color: var(--text-gold);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .letter-meta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    font-size: 0.82rem;
+  }
+
+  .relation-badge {
+    color: var(--text-gold);
+    font-weight: 600;
+  }
+
+  .date-badge {
+    color: var(--text-muted);
+  }
+
+  .card-greeting {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+  }
+
+  .card-message-body {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    white-space: pre-wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Voucher */
+  .voucher-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .voucher-symbol {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.4rem;
+    color: var(--accent-gold);
+    font-weight: bold;
+  }
+
+  .voucher-title {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-gold);
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+
+  .voucher-text {
+    font-size: 0.92rem;
+    color: var(--text-main);
+    font-weight: 500;
+    margin-top: 0.15rem;
+  }
+
+  .card-signoff {
+    text-align: right;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 1rem;
+  }
+
+  .card-signoff span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: block;
+  }
+
+  .card-signoff h3 {
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+  }
+
+  .card-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 600px) {
+    .card-page-container {
+      padding: 1.5rem 0.75rem;
+    }
+    .card-unlock-wrapper {
+      padding: 1.75rem 1.2rem;
+    }
+    .card-letter-box {
+      padding: 1.4rem 1.1rem;
+    }
+    .card-actions a,
+    .card-actions button {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import { decryptCapsule, type EncryptedPayload } from '../utils/crypto';
+  import { soundEngine } from '../utils/audio';
+
+  const lockedState = document.getElementById('locked-state');
+  const openedState = document.getElementById('opened-state');
+  const passContainer = document.getElementById('passphrase-container');
+  const passInput = document.getElementById('decrypt-pass') as HTMLInputElement;
+  const unlockBtn = document.getElementById('unlock-btn');
+  const errorMsg = document.getElementById('decrypt-error');
+
+  const cardTo = document.getElementById('card-to');
+  const cardFrom = document.getElementById('card-from');
+  const cardRelation = document.getElementById('card-relation');
+  const cardDate = document.getElementById('card-date');
+  const cardMsg = document.getElementById('card-message');
+  const cardVoucher = document.getElementById('card-voucher');
+  const cardVoucherContainer = document.getElementById('card-voucher-container');
+  const saveImgBtn = document.getElementById('save-card-img-btn');
+
+  // Parse hash params from URL
+  const hash = window.location.hash.substring(1);
+  const params = new URLSearchParams(hash);
+  const token = params.get('token') || '';
+  const isAuto = params.get('auto') === '1';
+
+  if (!isAuto && passContainer) {
+    passContainer.style.display = 'block';
+  }
+
+  async function attemptUnlock() {
+    if (!token) {
+      alert('No encrypted letter found in URL.');
+      return;
+    }
+
+    const secretKey = isAuto ? 'CELESTIAL_RAKHI_2026_DEFAULT' : (passInput?.value || '');
+
+    try {
+      if (errorMsg) errorMsg.style.display = 'none';
+      const payload: EncryptedPayload = await decryptCapsule(token, secretKey);
+
+      if (cardTo) cardTo.textContent = payload.to;
+      if (cardFrom) cardFrom.textContent = payload.from;
+      if (cardRelation) cardRelation.textContent = payload.relation;
+      if (cardDate) cardDate.textContent = payload.date || 'Shravana Purnima';
+      if (cardMsg) cardMsg.textContent = payload.message;
+
+      const greetingPrefix = document.getElementById('card-greeting-prefix');
+      const lang = localStorage.getItem('rb_lang') || 'bn';
+      if (greetingPrefix) {
+        greetingPrefix.textContent = lang === 'bn' ? 'স্নেহের' : 'Dear';
+      }
+
+      if (payload.siblingVoucher && cardVoucher) {
+        cardVoucher.textContent = payload.siblingVoucher;
+      } else if (cardVoucherContainer) {
+        cardVoucherContainer.style.display = 'none';
+      }
+
+      if (lockedState) lockedState.style.display = 'none';
+      if (openedState) {
+        openedState.style.display = 'block';
+        triggerCardPetals();
+      }
+
+      soundEngine.playCelebrationChime();
+    } catch (err) {
+      console.error(err);
+      if (errorMsg) errorMsg.style.display = 'block';
+    }
+  }
+
+  unlockBtn?.addEventListener('click', attemptUnlock);
+
+  if (isAuto && token) {
+    attemptUnlock();
+  }
+
+  // Native Canvas Flower Shower for Unlocking
+  function triggerCardPetals() {
+    const canvas = document.getElementById('card-confetti-canvas') as HTMLCanvasElement;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    const list: Array<{ x: number; y: number; vx: number; vy: number; size: number; color: string; alpha: number }> = [];
+    const colors = ['#FFA000', '#FF8F00', '#FFD54F', '#D32F2F', '#E53935'];
+
+    for (let i = 0; i < 75; i++) {
+      list.push({
+        x: canvas.width / 2,
+        y: canvas.height / 3,
+        vx: (Math.random() - 0.5) * 12,
+        vy: (Math.random() - 0.7) * 11,
+        size: Math.random() * 7 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: 1.0,
+      });
+    }
+
+    function render() {
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = list.length - 1; i >= 0; i--) {
+        const p = list[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.22;
+        p.alpha -= 0.015;
+        if (p.alpha <= 0) {
+          list.splice(i, 1);
+          continue;
+        }
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.ellipse(p.x, p.y, p.size, p.size * 0.6, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+      if (list.length > 0) requestAnimationFrame(render);
+    }
+    render();
+  }
+
+  // Save Card as PNG image using Canvas rendering (Zero emojis)
+  saveImgBtn?.addEventListener('click', () => {
+    const offCanvas = document.createElement('canvas');
+    offCanvas.width = 800;
+    offCanvas.height = 700;
+    const oCtx = offCanvas.getContext('2d');
+    if (!oCtx) return;
+
+    oCtx.fillStyle = '#0F1226';
+    oCtx.fillRect(0, 0, 800, 700);
+
+    oCtx.strokeStyle = '#D4AF37';
+    oCtx.lineWidth = 6;
+    oCtx.strokeRect(15, 15, 770, 670);
+
+    oCtx.fillStyle = '#FFD54F';
+    oCtx.font = 'bold 24px serif';
+    oCtx.textAlign = 'center';
+    oCtx.fillText('RAKSHA BANDHAN SMRITI PATRA', 400, 70);
+
+    oCtx.textAlign = 'left';
+    oCtx.fillStyle = '#FFFFFF';
+    oCtx.font = '20px serif';
+    oCtx.fillText(`To: ${cardTo?.textContent || ''}`, 50, 140);
+    oCtx.fillText(`From: ${cardFrom?.textContent || ''}`, 50, 180);
+
+    oCtx.font = '16px sans-serif';
+    oCtx.fillStyle = '#E0E2EC';
+    oCtx.fillText(`Message:`, 50, 240);
+
+    const words = (cardMsg?.textContent || '').split(' ');
+    let line = '';
+    let curY = 280;
+    for (let n = 0; n < words.length; n++) {
+      const testLine = line + words[n] + ' ';
+      const metrics = oCtx.measureText(testLine);
+      if (metrics.width > 700 && n > 0) {
+        oCtx.fillText(line, 50, curY);
+        line = words[n] + ' ';
+        curY += 28;
+      } else {
+        line = testLine;
+      }
+    }
+    oCtx.fillText(line, 50, curY);
+
+    if (cardVoucher?.textContent) {
+      curY += 50;
+      oCtx.fillStyle = '#FFB300';
+      oCtx.fillText(`Shagun: ${cardVoucher.textContent}`, 50, curY);
+    }
+
+    const a = document.createElement('a');
+    a.download = `raksha-bandhan-letter-${Date.now()}.png`;
+    a.href = offCanvas.toDataURL('image/png');
+    a.click();
+    soundEngine.playCelebrationChime();
+  });
+</script>
